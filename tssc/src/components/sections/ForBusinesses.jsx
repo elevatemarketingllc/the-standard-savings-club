@@ -9,15 +9,15 @@ const perks = [
 
 export default function ForBusinesses() {
   return (
-    <section className="bg-cream py-20">
+    <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="section-label">For Business Owners</div>
             <h2 className="font-heading text-4xl sm:text-5xl uppercase text-maroon-900 mt-2 mb-4">
-              Own a<br /><span className="text-accent-300">Business?</span>
+              Own a<br /><span className="text-gray-300">Business?</span>
             </h2>
-            <div className="w-16 h-1 bg-accent-300 mb-8" />
+            <div className="w-16 h-1 bg-maroon-700 mb-8" />
             <p className="text-gray-600 leading-relaxed mb-4">
               Stop by an Uncle Ben's Haircuts location to speak directly with Ben, or send us an email to get your business listed.
             </p>
@@ -39,7 +39,7 @@ export default function ForBusinesses() {
           <div className="space-y-6">
             {perks.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white border border-gray-100 shadow-sm p-6 flex gap-5 items-start group hover:border-maroon-200 transition-colors">
-                <div className="w-12 h-12 bg-maroon-700 group-hover:bg-accent-300 rounded-full flex-shrink-0 flex items-center justify-center transition-colors">
+                <div className="w-12 h-12 bg-maroon-700 group-hover:bg-maroon-700 rounded-full flex-shrink-0 flex items-center justify-center transition-colors">
                   <Icon size={20} className="text-white" />
                 </div>
                 <div>
@@ -50,7 +50,7 @@ export default function ForBusinesses() {
             ))}
 
             <div className="bg-maroon-700 text-white p-6">
-              <p className="font-heading text-sm tracking-widest uppercase text-accent-200 mb-1">Partners Added Weekly</p>
+              <p className="font-heading text-sm tracking-widest uppercase text-maroon-200 mb-1">Partners Added Weekly</p>
               <p className="text-maroon-200 text-sm">Join a growing network of Treasure Valley businesses reaching local members every day.</p>
             </div>
           </div>

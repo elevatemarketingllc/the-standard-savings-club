@@ -23,24 +23,24 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section className="bg-cream py-20">
+    <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="section-label">What You Get</div>
           <h2 className="font-heading text-4xl sm:text-5xl uppercase text-maroon-900 mt-2">
             More Than a Discount Card
           </h2>
-          <div className="w-16 h-1 bg-accent-300 mx-auto mt-4" />
+          <div className="w-16 h-1 bg-maroon-700 mx-auto mt-4" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {props.map(({ icon: Icon, title, subtitle, desc }, i) => (
             <div key={i} className="bg-white border border-gray-100 shadow-sm p-8 group hover:border-maroon-200 hover:shadow-md transition-all duration-200">
-              <div className="w-14 h-14 bg-maroon-700 group-hover:bg-accent-300 rounded-full flex items-center justify-center mb-6 transition-colors duration-200">
+              <div className="w-14 h-14 bg-maroon-700 group-hover:bg-maroon-700 rounded-full flex items-center justify-center mb-6 transition-colors duration-200">
                 <Icon size={24} className="text-white" />
               </div>
               <h3 className="font-heading text-xl uppercase text-maroon-900 mb-1">{title}</h3>
-              <p className="text-accent-400 text-sm font-medium mb-3">{subtitle}</p>
+              <p className="text-gray-400 text-sm font-medium mb-3">{subtitle}</p>
               <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
             </div>
           ))}
