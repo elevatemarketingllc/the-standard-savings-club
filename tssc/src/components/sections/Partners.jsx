@@ -23,8 +23,8 @@ export default function Partners() {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
           {partners.map(({ name, category }) => (
             <div key={name} className="bg-white border border-gray-100 shadow-sm p-6 flex flex-col items-center text-center group hover:border-maroon-200 hover:shadow-md transition-all duration-200">
-              <div className="w-16 h-16 bg-maroon-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-maroon-700 transition-colors duration-200">
-                <span className="font-heading text-2xl font-bold text-maroon-700 group-hover:text-white transition-colors duration-200">
+              <div className="w-16 h-16 bg-maroon-700 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-500 transition-colors duration-200">
+                <span className="font-heading text-2xl font-bold text-white">
                   {name.charAt(0)}
                 </span>
               </div>

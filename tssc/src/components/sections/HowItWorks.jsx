@@ -20,7 +20,7 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-14">
           {steps.map(({ num, title, desc }) => (
             <div key={num} className="relative">
-              <div className="font-heading text-7xl font-bold text-maroon-700 leading-none mb-4">{num}</div>
+              <div className="font-heading text-7xl font-bold text-gold-500 opacity-40 leading-none mb-4">{num}</div>
               <h3 className="font-heading text-lg uppercase text-gold-400 mb-2">{title}</h3>
               <p className="text-maroon-200 text-sm leading-relaxed">{desc}</p>
             </div>
