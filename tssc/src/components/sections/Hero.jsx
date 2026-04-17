@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Boise background image */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${boiseBg})`, backgroundPosition: 'center 60%' }}
+        style={{ backgroundImage: `url(${boiseBg})`, backgroundPosition: 'center 75%' }}
       />
 
       {/* Dark maroon overlay - keeps text readable while showing the city */}
@@ -20,7 +20,7 @@ export default function Hero() {
         style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)' }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left — Text */}
@@ -47,38 +47,38 @@ export default function Hero() {
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
                 <div>
                   <div className="font-heading text-sm tracking-wider uppercase text-white">$10 Off Monthly</div>
-                  <div className="text-xs text-maroon-300">at Uncle Ben's Haircuts</div>
+                  <div className="text-xs text-white/70">at Uncle Ben's Haircuts</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">%</div>
                 <div>
                   <div className="font-heading text-sm tracking-wider uppercase text-white">Save 15–75%</div>
-                  <div className="text-xs text-maroon-300">at local businesses</div>
+                  <div className="text-xs text-white/70">at local businesses</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">🎙</div>
                 <div>
                   <div className="font-heading text-sm tracking-wider uppercase text-white">Weekly Live Zooms</div>
-                  <div className="text-xs text-maroon-300">with real business owners</div>
+                  <div className="text-xs text-white/70">with real business owners</div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/join"
                 className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-maroon-900 font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200 group">
                 Join Now — $33/Month
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-500 hover:text-white text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200">
+                className="inline-flex items-center justify-center gap-2 border-2 border-white/50 hover:border-white text-white/80 hover:text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200">
                 See How It Works
               </a>
             </div>
 
-            <p className="text-maroon-400 text-xs mt-4 tracking-wide">Cancel anytime · No contracts · New deals added weekly</p>
+            <p className="text-white/50 text-xs mt-3 tracking-wide">Cancel anytime · No contracts · New deals added weekly</p>
           </div>
 
           {/* Right — Card */}
