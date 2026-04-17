@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import boiseBg from '../../assets/boise.jpg'
 
 export default function Hero() {
   return (
     <section className="relative bg-maroon-900 text-white overflow-hidden min-h-[92vh] flex items-center">
 
-      {/* Background texture */}
+      {/* Boise background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${boiseBg})` }}
+      />
+
+      {/* Dark maroon overlay - keeps text readable while showing the city */}
+      <div className="absolute inset-0 bg-maroon-950 opacity-80" />
+
+      {/* Subtle grid texture on top */}
       <div className="absolute inset-0 opacity-5"
         style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)' }}
       />
-
-      {/* Maroon gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-maroon-950 via-maroon-900 to-maroon-800" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
