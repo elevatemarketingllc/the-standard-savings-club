@@ -4,12 +4,12 @@ import boiseBg from '../../assets/boise.jpg'
 
 export default function Hero() {
   return (
-    <section className="relative bg-maroon-900 text-white overflow-hidden min-h-[92vh] flex items-center">
+    <section className="relative bg-maroon-900 text-white overflow-hidden min-h-screen flex items-center">
 
       {/* Boise background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${boiseBg})` }}
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${boiseBg})`, backgroundPosition: 'center 60%' }}
       />
 
       {/* Dark maroon overlay - keeps text readable while showing the city */}
@@ -20,17 +20,17 @@ export default function Hero() {
         style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.3) 40px, rgba(255,255,255,0.3) 41px)' }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left — Text */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-maroon-700 border border-maroon-600 px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-maroon-700 border border-maroon-600 px-4 py-2 mb-4">
               <span className="w-2 h-2 bg-maroon-700 rounded-full animate-pulse" />
               <span className="font-heading text-xs tracking-widest uppercase text-white">Boise, Idaho</span>
             </div>
 
-            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-wide uppercase mb-6">
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-none tracking-wide uppercase mb-4">
               Save At &<br />
               <span className="text-white">Support Local</span><br />
               Idaho Businesses<br />
@@ -42,7 +42,7 @@ export default function Hero() {
               Built for Real Local Savings and Supporting Our Community.
             </p>
 
-            <div className="flex flex-wrap gap-6 mb-10 mt-8">
+            <div className="flex flex-wrap gap-4 mb-6 mt-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
                 <div>
