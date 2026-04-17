@@ -16,9 +16,9 @@ export default function Pricing() {
     <section className="bg-maroon-900 text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <div className="font-heading text-xs tracking-widest uppercase text-gold-400 mb-2">Membership</div>
+          <div className="font-heading text-xs tracking-widest uppercase text-accent-200 mb-2">Membership</div>
           <h2 className="font-heading text-4xl sm:text-5xl uppercase">One Simple Price</h2>
-          <div className="w-16 h-1 bg-gold-500 mx-auto mt-4" />
+          <div className="w-16 h-1 bg-accent-300 mx-auto mt-4" />
         </div>
 
         <div className="max-w-lg mx-auto">
@@ -32,7 +32,7 @@ export default function Pricing() {
             <div className="space-y-4 mb-10">
               {included.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-5 h-5 bg-gold-500 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5">
+                  <div className="w-5 h-5 bg-accent-300 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5">
                     <Check size={11} color="white" strokeWidth={3} />
                   </div>
                   <span className="text-maroon-100 text-sm leading-relaxed">{item}</span>
@@ -41,7 +41,7 @@ export default function Pricing() {
             </div>
 
             <Link to="/join"
-              className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-heading text-sm font-semibold tracking-widest uppercase py-4 transition-colors">
+              className="block w-full text-center bg-accent-300 hover:bg-accent-400 text-white font-heading text-sm font-semibold tracking-widest uppercase py-4 transition-colors">
               Join The Standard Savings Club
             </Link>
           </div>

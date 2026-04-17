@@ -17,22 +17,22 @@ export default function Navbar() {
     <nav className="bg-maroon-700 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-heading text-lg font-bold tracking-widest uppercase hover:text-gold-400 transition-colors">
+          <Link to="/" className="font-heading text-lg font-bold tracking-widest uppercase hover:text-accent-200 transition-colors">
             The Standard Savings Club
           </Link>
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-gold-400 transition-colors">Home</Link>
-            <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-gold-400 transition-colors">Join</Link>
-            <Link to="/business" className="text-sm font-heading tracking-wider uppercase hover:text-gold-400 transition-colors">For Businesses</Link>
+            <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-accent-200 transition-colors">Home</Link>
+            <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-accent-200 transition-colors">Join</Link>
+            <Link to="/business" className="text-sm font-heading tracking-wider uppercase hover:text-accent-200 transition-colors">For Businesses</Link>
             {user ? (
               <>
-                <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-gold-400 transition-colors">My Account</Link>
-                <button onClick={handleSignOut} className="bg-gold-500 hover:bg-gold-600 text-white font-heading text-sm tracking-wider uppercase px-4 py-2 transition-colors">Sign Out</button>
+                <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-accent-200 transition-colors">My Account</Link>
+                <button onClick={handleSignOut} className="bg-accent-300 hover:bg-accent-400 text-white font-heading text-sm tracking-wider uppercase px-4 py-2 transition-colors">Sign Out</button>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-gold-400 transition-colors">Login</Link>
-                <Link to="/join" className="bg-gold-500 hover:bg-gold-600 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 transition-colors">
+                <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-accent-200 transition-colors">Login</Link>
+                <Link to="/join" className="bg-accent-300 hover:bg-accent-400 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 transition-colors">
                   Join — $33/mo
                 </Link>
               </>
@@ -51,12 +51,12 @@ export default function Navbar() {
           {user ? (
             <>
               <Link to="/member" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>My Account</Link>
-              <button onClick={handleSignOut} className="bg-gold-500 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-left">Sign Out</button>
+              <button onClick={handleSignOut} className="bg-accent-300 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-left">Sign Out</button>
             </>
           ) : (
             <>
               <Link to="/login" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Login</Link>
-              <Link to="/join" className="bg-gold-500 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-center" onClick={() => setMobileOpen(false)}>Join — $33/mo</Link>
+              <Link to="/join" className="bg-accent-300 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-center" onClick={() => setMobileOpen(false)}>Join — $33/mo</Link>
             </>
           )}
         </div>

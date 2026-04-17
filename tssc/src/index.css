@@ -23,8 +23,8 @@
   .btn-secondary {
     @apply border-2 border-maroon-700 text-maroon-700 hover:bg-maroon-700 hover:text-white font-heading font-semibold tracking-wider uppercase px-8 py-3 transition-all duration-200;
   }
-  .btn-gold {
-    @apply bg-gold-500 hover:bg-gold-600 text-white font-heading font-semibold tracking-wider uppercase px-8 py-3 transition-all duration-200;
+  .btn-accent {
+    @apply bg-accent-300 hover:bg-accent-400 text-white font-heading font-semibold tracking-wider uppercase px-8 py-3 transition-all duration-200;
   }
   .section-label {
     @apply font-heading text-xs tracking-widest uppercase text-maroon-700 mb-2;
