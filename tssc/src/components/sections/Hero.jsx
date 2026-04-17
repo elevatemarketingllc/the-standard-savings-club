@@ -20,17 +20,17 @@ export default function Hero() {
           <div>
             <div className="inline-flex items-center gap-2 bg-maroon-700 border border-maroon-600 px-4 py-2 mb-6">
               <span className="w-2 h-2 bg-maroon-700 rounded-full animate-pulse" />
-              <span className="font-heading text-xs tracking-widest uppercase text-maroon-200">Boise, Idaho</span>
+              <span className="font-heading text-xs tracking-widest uppercase text-white">Boise, Idaho</span>
             </div>
 
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-wide uppercase mb-6">
               Save At &<br />
-              <span className="text-maroon-200">Support Local</span><br />
+              <span className="text-white">Support Local</span><br />
               Idaho Businesses<br />
               Every Day.
             </h1>
 
-            <p className="text-maroon-200 text-lg leading-relaxed mb-4 italic font-medium">
+            <p className="text-white text-lg leading-relaxed mb-4 italic font-medium">
               Not Your Standard Coupon Book.<br />
               Built for Real Local Savings and Supporting Our Community.
             </p>
@@ -39,21 +39,21 @@ export default function Hero() {
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
                 <div>
-                  <div className="font-heading text-sm tracking-wider uppercase text-maroon-200">$10 Off Monthly</div>
+                  <div className="font-heading text-sm tracking-wider uppercase text-white">$10 Off Monthly</div>
                   <div className="text-xs text-maroon-300">at Uncle Ben's Haircuts</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">%</div>
                 <div>
-                  <div className="font-heading text-sm tracking-wider uppercase text-maroon-200">Save 15–75%</div>
+                  <div className="font-heading text-sm tracking-wider uppercase text-white">Save 15–75%</div>
                   <div className="text-xs text-maroon-300">at local businesses</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-maroon-700 rounded-full flex items-center justify-center text-white font-bold text-sm">🎙</div>
                 <div>
-                  <div className="font-heading text-sm tracking-wider uppercase text-maroon-200">Weekly Live Zooms</div>
+                  <div className="font-heading text-sm tracking-wider uppercase text-white">Weekly Live Zooms</div>
                   <div className="text-xs text-maroon-300">with real business owners</div>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function Hero() {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-500 hover:text-maroon-200 text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200">
+                className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-500 hover:text-white text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200">
                 See How It Works
               </a>
             </div>
@@ -78,7 +78,7 @@ export default function Hero() {
           <div className="hidden lg:block">
             <div className="bg-maroon-800 border border-maroon-600 p-8">
               <div className="text-center mb-8">
-                <div className="font-heading text-maroon-200 text-xs tracking-widest uppercase mb-2">Membership</div>
+                <div className="font-heading text-white text-xs tracking-widest uppercase mb-2">Membership</div>
                 <div className="font-heading text-8xl font-bold text-white leading-none">$33</div>
                 <div className="font-heading text-lg tracking-widest uppercase text-maroon-300 mt-1">/ Month</div>
               </div>

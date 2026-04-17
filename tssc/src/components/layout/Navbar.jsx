@@ -17,22 +17,22 @@ export default function Navbar() {
     <nav className="bg-maroon-700 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-heading text-lg font-bold tracking-widest uppercase hover:text-maroon-200 transition-colors">
+          <Link to="/" className="font-heading text-lg font-bold tracking-widest uppercase hover:text-white transition-colors">
             The Standard Savings Club
           </Link>
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-maroon-200 transition-colors">Home</Link>
-            <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-maroon-200 transition-colors">Join</Link>
-            <Link to="/business" className="text-sm font-heading tracking-wider uppercase hover:text-maroon-200 transition-colors">For Businesses</Link>
+            <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Home</Link>
+            <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Join</Link>
+            <Link to="/business" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">For Businesses</Link>
             {user ? (
               <>
-                <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-maroon-200 transition-colors">My Account</Link>
+                <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">My Account</Link>
                 <button onClick={handleSignOut} className="bg-gray-100 hover:bg-white text-maroon-900 font-heading text-sm tracking-wider uppercase px-4 py-2 transition-colors">Sign Out</button>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-maroon-200 transition-colors">Login</Link>
-                <Link to="/join" className="bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 transition-colors">
+                <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Login</Link>
+                <Link to="/join" className="border-2 border-white hover:bg-white hover:text-maroon-900 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 transition-colors">
                   Join — $33/mo
                 </Link>
               </>
@@ -56,7 +56,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link to="/login" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Login</Link>
-              <Link to="/join" className="bg-maroon-700 text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-center" onClick={() => setMobileOpen(false)}>Join — $33/mo</Link>
+              <Link to="/join" className="border-2 border-white text-white font-heading text-sm tracking-wider uppercase px-5 py-2 text-center" onClick={() => setMobileOpen(false)}>Join — $33/mo</Link>
             </>
           )}
         </div>

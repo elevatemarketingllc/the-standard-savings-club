@@ -40,7 +40,7 @@ export default function ValueProps() {
                 <Icon size={24} className="text-white" />
               </div>
               <h3 className="font-heading text-xl uppercase text-maroon-900 mb-1">{title}</h3>
-              <p className="text-gray-400 text-sm font-medium mb-3">{subtitle}</p>
+              <p className="text-gray-500 text-sm font-medium mb-3">{subtitle}</p>
               <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
             </div>
           ))}

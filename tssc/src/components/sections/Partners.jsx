@@ -29,7 +29,7 @@ export default function Partners() {
                 </span>
               </div>
               <h3 className="font-heading text-sm uppercase text-maroon-900 leading-tight mb-1">{name}</h3>
-              <span className="text-xs text-gray-400 font-medium">{category}</span>
+              <span className="text-xs text-gray-500 font-medium">{category}</span>
             </div>
           ))}
         </div>

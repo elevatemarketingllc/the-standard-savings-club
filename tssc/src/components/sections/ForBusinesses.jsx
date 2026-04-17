@@ -15,7 +15,7 @@ export default function ForBusinesses() {
           <div>
             <div className="section-label">For Business Owners</div>
             <h2 className="font-heading text-4xl sm:text-5xl uppercase text-maroon-900 mt-2 mb-4">
-              Own a<br /><span className="text-gray-300">Business?</span>
+              Own a<br /><span className="text-maroon-700">Business?</span>
             </h2>
             <div className="w-16 h-1 bg-maroon-700 mb-8" />
             <p className="text-gray-600 leading-relaxed mb-4">
