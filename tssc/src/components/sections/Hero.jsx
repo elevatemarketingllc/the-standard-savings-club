@@ -13,7 +13,7 @@ export default function Hero() {
       />
 
       {/* Dark maroon overlay - keeps text readable while showing the city */}
-      <div className="absolute inset-0 bg-maroon-950 opacity-80" />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(42, 20, 21, 0.82)' }} />
 
       {/* Subtle grid texture on top */}
       <div className="absolute inset-0 opacity-5"
