@@ -1,1 +1,21 @@
-export default function Home() { return <div className='min-h-screen flex items-center justify-center'><h1 className='font-heading text-4xl text-maroon-700'>Home Coming Soon</h1></div> }
+import Hero from '../components/sections/Hero'
+import ValueProps from '../components/sections/ValueProps'
+import HowItWorks from '../components/sections/HowItWorks'
+import Partners from '../components/sections/Partners'
+import Pricing from '../components/sections/Pricing'
+import ForBusinesses from '../components/sections/ForBusinesses'
+import CallToAction from '../components/sections/CallToAction'
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      <ValueProps />
+      <HowItWorks />
+      <Partners />
+      <Pricing />
+      <ForBusinesses />
+      <CallToAction />
+    </>
+  )
+}
