@@ -1,16 +1,21 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { RefreshCw, Eye, EyeOff, Check } from 'lucide-react'
+import { RefreshCw, Eye, EyeOff, Check, Lock } from 'lucide-react'
 
 export default function Register() {
   const { signUp } = useAuth()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' })
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
+
+  // Check if coming from Stripe — look for session_id param
+  const sessionId = searchParams.get('session_id')
+  const hasPaid = !!sessionId
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
@@ -22,13 +27,47 @@ export default function Register() {
     if (form.password.length < 8) { setError('Password must be at least 8 characters.'); return }
     setLoading(true)
     const { error } = await signUp(form.email, form.password, {
-      first_name: form.firstName, last_name: form.lastName,
-      phone: form.phone, full_name: `${form.firstName} ${form.lastName}`,
+      first_name: form.firstName,
+      last_name: form.lastName,
+      phone: form.phone,
+      full_name: `${form.firstName} ${form.lastName}`,
+      stripe_session_id: sessionId,
     })
     if (error) { setError(error.message); setLoading(false) }
     else { setSuccess(true); setLoading(false) }
   }
 
+  // No payment detected — gate the page
+  if (!hasPaid) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="bg-maroon-900 text-white py-12 text-center">
+          <Link to="/" className="font-heading text-xs tracking-widest uppercase text-gray-300 hover:text-white transition-colors mb-3 block">← The Standard Savings Club</Link>
+          <h1 className="font-heading text-4xl uppercase font-bold">Create Your Account</h1>
+        </div>
+        <div className="flex-1 flex items-center justify-center px-4 py-16">
+          <div className="w-full max-w-md">
+            <div className="bg-white border border-gray-200 shadow-sm p-10 text-center">
+              <div className="w-16 h-16 bg-maroon-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Lock size={28} className="text-maroon-700" />
+              </div>
+              <h2 className="font-heading text-2xl uppercase text-maroon-900 mb-3">Payment Required</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                Membership is <strong>$33/month</strong>. You'll need to complete your payment through Stripe before creating your account.
+              </p>
+              <Link to="/join"
+                className="block w-full bg-maroon-700 hover:bg-maroon-800 text-white font-heading font-semibold tracking-widest uppercase py-4 transition-colors text-center mb-4">
+                Join for $33/Month →
+              </Link>
+              <p className="text-gray-400 text-xs">Already paid? Make sure you're using the link sent by Stripe after checkout.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Success state
   if (success) return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <div className="bg-maroon-900 text-white py-12 text-center">
@@ -55,21 +94,25 @@ export default function Register() {
     </div>
   )
 
+  // Registration form (payment confirmed)
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <div className="bg-maroon-900 text-white py-12 text-center">
         <Link to="/" className="font-heading text-xs tracking-widest uppercase text-gray-300 hover:text-white transition-colors mb-3 block">← The Standard Savings Club</Link>
         <h1 className="font-heading text-4xl uppercase font-bold">Create Your Account</h1>
-        <p className="text-maroon-200 text-sm mt-2">Already paid? Set up your member account below.</p>
+        <p className="text-maroon-200 text-sm mt-2">Payment confirmed — set up your member account below.</p>
       </div>
       <div className="flex-1 flex items-start justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="bg-white border border-gray-200 shadow-sm p-8">
-            <div className="bg-maroon-50 border border-maroon-100 p-4 mb-6">
-              <p className="text-maroon-700 text-xs font-heading tracking-wider uppercase font-semibold mb-1">Already paid via Stripe?</p>
-              <p className="text-gray-600 text-xs leading-relaxed">Use the same email address you used during checkout to link your subscription.</p>
+            {/* Payment confirmed badge */}
+            <div className="bg-green-50 border border-green-200 px-4 py-3 mb-6 flex items-center gap-3">
+              <Check size={16} className="text-green-600 flex-shrink-0" />
+              <p className="text-green-700 text-xs font-heading tracking-wider uppercase font-semibold">Payment Confirmed — Welcome to The Standard!</p>
             </div>
+
             {error && <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 mb-6">{error}</div>}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -87,12 +130,12 @@ export default function Register() {
                 <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Email Address</label>
                 <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="you@email.com"
                   className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                <p className="text-xs text-gray-400 mt-1">Use the same email you paid with on Stripe</p>
               </div>
               <div>
                 <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Phone Number <span className="text-red-500">*</span></label>
                 <input type="tel" name="phone" value={form.phone} onChange={handleChange} required placeholder="(208) 555-0123"
                   className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
-                <p className="text-xs text-gray-400 mt-1">Required — used for membership verification</p>
               </div>
               <div>
                 <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Password</label>
@@ -111,7 +154,7 @@ export default function Register() {
               </div>
               <button type="submit" disabled={loading}
                 className="w-full bg-maroon-700 hover:bg-maroon-800 disabled:opacity-60 text-white font-heading font-semibold tracking-widest uppercase py-4 transition-colors flex items-center justify-center gap-2 mt-2">
-                {loading ? <><RefreshCw size={16} className="animate-spin" /> Creating Account...</> : 'Create Account'}
+                {loading ? <><RefreshCw size={16} className="animate-spin" /> Creating Account...</> : 'Create My Account'}
               </button>
             </form>
             <div className="mt-6 pt-6 border-t border-gray-100 text-center">

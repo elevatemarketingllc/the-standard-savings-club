@@ -112,7 +112,7 @@ export default function Login() {
               </p>
               <p className="text-gray-400 text-xs">
                 Just signed up?{' '}
-                <Link to="/register" className="text-maroon-700 hover:text-maroon-900 transition-colors">
+                <Link to="/join" className="text-maroon-700 hover:text-maroon-900 transition-colors">
                   Create your account here
                 </Link>
               </p>
