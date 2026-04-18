@@ -57,7 +57,7 @@ export default function ForBusinesses() {
         </div>
       </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-center">
-          <p className="text-gray-500 text-sm">Already a partner? <Link to="/business-portal" className="text-maroon-700 hover:underline font-semibold">Access your business portal →</Link></p>
+          <p className="text-gray-500 text-sm">Already a partner? <Link to="/business-login" className="text-maroon-700 hover:underline font-semibold">Access your business portal →</Link></p>
         </div>
       </section>
   )

@@ -18,6 +18,8 @@ import Profile from './pages/member/Profile'
 
 // Admin pages (protected)
 import AdminDashboard from './pages/admin/AdminDashboard'
+import BusinessLogin from './pages/auth/BusinessLogin'
+import BusinessRegister from './pages/auth/BusinessRegister'
 import MemberCard from './pages/member/MemberCard'
 import Verify from './pages/Verify'
 import AdminMembers from './pages/admin/AdminMembers'
@@ -41,6 +43,8 @@ export default function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/business" element={<BusinessSignup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/business-login" element={<BusinessLogin />} />
+          <Route path="/business-register" element={<BusinessRegister />} />
           <Route path="/register" element={<Register />} />
 
           {/* Member portal - protected */}

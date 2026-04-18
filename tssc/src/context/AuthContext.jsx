@@ -5,27 +5,40 @@ const AuthContext = createContext({})
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
-  const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [isBusiness, setIsBusiness] = useState(false)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
       setUser(session?.user ?? null)
+      if (session?.user) checkBusinessUser(session.user.id)
       setLoading(false)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
       setUser(session?.user ?? null)
-      setLoading(false)
+      if (session?.user) checkBusinessUser(session.user.id)
+      else setIsBusiness(false)
     })
 
     return () => subscription.unsubscribe()
   }, [])
 
-  const signUp = async (email, password, metadata) => {
-    return supabase.auth.signUp({ email, password, options: { data: metadata } })
+  const checkBusinessUser = async (userId) => {
+    const { data } = await supabase
+      .from('business_users')
+      .select('id')
+      .eq('user_id', userId)
+      .single()
+    setIsBusiness(!!data)
+  }
+
+  const signUp = async (email, password, metadata = {}) => {
+    return supabase.auth.signUp({
+      email,
+      password,
+      options: { data: metadata }
+    })
   }
 
   const signIn = async (email, password) => {
@@ -33,11 +46,12 @@ export function AuthProvider({ children }) {
   }
 
   const signOut = async () => {
-    return supabase.auth.signOut()
+    await supabase.auth.signOut()
+    setIsBusiness(false)
   }
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, loading, isBusiness, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

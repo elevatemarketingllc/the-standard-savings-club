@@ -117,6 +117,14 @@ export default function Login() {
                 </Link>
               </p>
             </div>
+            <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+              <p className="text-gray-400 text-xs">
+                Business partner?{' '}
+                <Link to="/business-login" className="text-maroon-700 hover:text-maroon-900 font-semibold transition-colors">
+                  Access your portal →
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
