@@ -23,7 +23,7 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-gray-50 pb-20 pt-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="section-label">What You Get</div>

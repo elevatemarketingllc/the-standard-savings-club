@@ -11,7 +11,7 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="py-20 bg-white">
+    <section className="pb-20 pt-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="font-heading text-xs tracking-widest uppercase text-maroon-700 mb-3">Treasure Valley</div>

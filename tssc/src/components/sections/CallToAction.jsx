@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function CallToAction() {
   return (
-    <section className="bg-maroon-900 text-white py-24">
+    <section className="bg-maroon-900 text-white pb-24 pt-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="font-heading text-xs tracking-widest uppercase text-maroon-200 mb-4">Join Today</div>
         <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl uppercase font-bold leading-none mb-6">

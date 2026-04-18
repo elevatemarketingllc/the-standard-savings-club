@@ -9,7 +9,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-maroon-900 text-white py-20">
+    <section id="how-it-works" className="bg-maroon-900 text-white pb-20 pt-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="font-heading text-xs tracking-widest uppercase text-maroon-200 mb-2">Simple Process</div>
