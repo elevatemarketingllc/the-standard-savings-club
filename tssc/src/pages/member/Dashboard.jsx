@@ -67,6 +67,7 @@ export default function Dashboard() {
             { icon: Video, label: 'Video Library', desc: 'Watch past sessions', href: '/member/videos', color: 'bg-maroon-800' },
             { icon: MessageSquare, label: 'Forum', desc: 'Connect with members', href: '/member/forum', color: 'bg-maroon-700' },
             { icon: User, label: 'My Profile', desc: 'Update your info', href: '/member/profile', color: 'bg-maroon-800' },
+          { icon: Tag, label: 'Member Card', desc: 'QR code & ID', href: '/member/card', color: 'bg-maroon-700' },
           ].map(({ icon: Icon, label, desc, href, color }) => (
             <Link key={label} to={href}
               className="bg-white border border-gray-200 shadow-sm p-5 hover:border-maroon-200 hover:shadow-md transition-all duration-200 group">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import { Users, Video, MessageSquare, Plus, RefreshCw, Check, Trash2, Pin, ChevronDown, ChevronUp, Upload } from 'lucide-react'
@@ -144,7 +145,7 @@ export default function AdminDashboard() {
     )
   }
 
-  const TABS = ['overview', 'videos', 'forum']
+  const TABS = ['overview', 'videos', 'forum', 'members']
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -307,6 +308,17 @@ export default function AdminDashboard() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Members */}
+        {activeTab === 'members' && (
+          <div className="bg-white border border-gray-200 shadow-sm p-8 text-center">
+            <div className="font-heading text-2xl uppercase text-maroon-900 mb-3">Member Management</div>
+            <p className="text-gray-500 text-sm mb-6">View all registered members, their membership IDs, contact info and more.</p>
+            <Link to="/admin/members" className="inline-flex items-center gap-2 bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-xs tracking-widest uppercase px-6 py-3 transition-colors">
+              View All Members →
+            </Link>
           </div>
         )}
 

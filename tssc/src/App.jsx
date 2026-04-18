@@ -18,6 +18,9 @@ import Profile from './pages/member/Profile'
 
 // Admin pages (protected)
 import AdminDashboard from './pages/admin/AdminDashboard'
+import MemberCard from './pages/member/MemberCard'
+import Verify from './pages/Verify'
+import AdminMembers from './pages/admin/AdminMembers'
 import BusinessDirectory from './pages/businesses/BusinessDirectory'
 import BusinessPage from './pages/businesses/BusinessPage'
 import BusinessPortal from './pages/business-portal/BusinessPortal'
@@ -48,6 +51,9 @@ export default function App() {
 
           {/* Admin - protected + admin role */}
           <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/member/card" element={<ProtectedRoute><MemberCard /></ProtectedRoute>} />
+          <Route path="/verify/:id" element={<Verify />} />
+          <Route path="/admin/members" element={<ProtectedRoute><AdminMembers /></ProtectedRoute>} />
           <Route path="/businesses" element={<BusinessDirectory />} />
           <Route path="/businesses/:slug" element={<BusinessPage />} />
           <Route path="/business-portal" element={<ProtectedRoute><BusinessPortal /></ProtectedRoute>} />
