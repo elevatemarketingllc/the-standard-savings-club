@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Boise background image */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${boiseBg})`, backgroundPosition: 'center 75%' }}
+        style={{ backgroundImage: `url(${boiseBg})`, backgroundPosition: 'center 85%' }}
       />
 
       {/* Dark maroon overlay - keeps text readable while showing the city */}
@@ -25,8 +25,8 @@ export default function Hero() {
 
           {/* Left — Text */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-maroon-700 border border-maroon-600 px-4 py-2 mb-4">
-              <span className="w-2 h-2 bg-maroon-700 rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 border border-white/30 px-3 py-1.5 mb-4">
+              <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
               <span className="font-heading text-xs tracking-widest uppercase text-white">Boise, Idaho</span>
             </div>
 

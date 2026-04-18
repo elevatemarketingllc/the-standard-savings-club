@@ -28,6 +28,12 @@ export default function Footer() {
         </div>
         <div className="border-t border-maroon-700 pt-6 text-center text-sm text-gray-400">
           <p>© {new Date().getFullYear()} The Standard Savings Club. All rights reserved. · Boise, Idaho</p>
+          <p className="mt-2 text-xs text-maroon-600">
+            Built by{' '}
+            <a href="https://elevatemarketingidaho.com" target="_blank" rel="noreferrer" className="hover:text-maroon-400 transition-colors">
+              Elevate Marketing LLC
+            </a>
+          </p>
         </div>
       </div>
     </footer>
