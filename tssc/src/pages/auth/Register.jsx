@@ -117,12 +117,12 @@ export default function Register() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">First Name</label>
-                  <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="Ben"
+                  <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required placeholder="John"
                     className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
                 </div>
                 <div>
                   <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Last Name</label>
-                  <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Galvan"
+                  <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required placeholder="Smith"
                     className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
                 </div>
               </div>
