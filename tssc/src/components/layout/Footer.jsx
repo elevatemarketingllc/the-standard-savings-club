@@ -15,7 +15,6 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-maroon-200 transition-colors">Home</Link></li>
               <li><Link to="/join" className="hover:text-maroon-200 transition-colors">Join — $33/mo</Link></li>
               <li><Link to="/businesses" className="hover:text-maroon-200 transition-colors">Partner Directory</Link></li>
-              <li><Link to="/businesses" className="hover:text-maroon-200 transition-colors">Partner Directory</Link></li>
               <li><Link to="/login" className="hover:text-maroon-200 transition-colors">Member Login</Link></li>
               <li><Link to="/business-login" className="hover:text-maroon-200 transition-colors">Business Portal</Link></li>
             </ul>
@@ -24,7 +23,7 @@ export default function Footer() {
             <h4 className="font-heading tracking-widest uppercase mb-4 text-sm">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li><a href="mailto:Join@thestandardsavingsclub.com" className="hover:text-maroon-200 transition-colors">Join@thestandardsavingsclub.com</a></li>
-              <li><a href="https://instagram.com/thestandard.id" target="_blank" rel="noreferrer" className="hover:text-maroon-200 transition-colors"><a href="https://instagram.com/thestandard.id" target="_blank" rel="noreferrer" className="hover:text-maroon-200 transition-colors">@thestandard.id</a></a></li>
+              <li><a href="https://instagram.com/thestandard.id" target="_blank" rel="noreferrer" className="hover:text-maroon-200 transition-colors">@thestandard.id</a></li>
             </ul>
           </div>
         </div>
