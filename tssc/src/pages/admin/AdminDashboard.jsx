@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import { Users, Video, MessageSquare, Plus, RefreshCw, Check, Trash2, Pin, ChevronDown, ChevronUp, Upload } from 'lucide-react'
 
-const ADMIN_EMAIL = 'elevatemarketingidaho@gmail.com'
+const ADMIN_EMAILS = ['elevatemarketingidaho@gmail.com', 'admin@thestandardsavingsclub.com']
 
 // Seed posts Ben would want pinned from the start
 const SEED_POSTS = [
@@ -46,7 +46,7 @@ export default function AdminDashboard() {
   const [postForm, setPostForm] = useState({ title: '', body: '', pinned: false })
   const [savingPost, setSavingPost] = useState(false)
 
-  const isAdmin = user?.email === ADMIN_EMAIL
+  const isAdmin = ADMIN_EMAILS.includes(user?.email)
 
   useEffect(() => {
     if (isAdmin) {

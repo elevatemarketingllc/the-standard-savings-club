@@ -14,7 +14,7 @@ export default function ProtectedRoute({ children, adminOnly = false }) {
   if (!user) return <Navigate to="/login" state={{ from: location }} replace />
 
   // Admin-only check
-  if (adminOnly && user.email !== 'elevatemarketingidaho@gmail.com') {
+  if (adminOnly && !['elevatemarketingidaho@gmail.com', 'admin@thestandardsavingsclub.com'].includes(user.email)) {
     return <Navigate to={isBusiness ? '/business-portal' : '/member'} replace />
   }
 
