@@ -12,6 +12,18 @@ export default function MemberCard() {
 
   useEffect(() => { loadProfile() }, [])
 
+  // Hide navbar on mobile for fullscreen card experience
+  useEffect(() => {
+    const nav = document.querySelector('nav')
+    if (nav && window.innerWidth < 768) {
+      nav.style.display = 'none'
+    }
+    return () => {
+      const nav = document.querySelector('nav')
+      if (nav) nav.style.display = ''
+    }
+  }, [])
+
   const loadProfile = async () => {
     const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
     setProfile(data)
@@ -41,7 +53,7 @@ export default function MemberCard() {
   )
 
   return (
-    <div className="min-h-screen bg-maroon-950 flex flex-col items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-maroon-950 flex flex-col items-center justify-center px-4 py-8 [&~footer]:hidden">
       {/* Back link */}
       <div className="w-full max-w-sm mb-6">
         <Link to="/member" className="flex items-center gap-1 text-maroon-400 hover:text-white text-xs font-heading tracking-widest uppercase transition-colors">

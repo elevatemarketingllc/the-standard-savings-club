@@ -1,0 +1,18 @@
+{
+  "name": "The Standard Savings Club",
+  "short_name": "TSSC",
+  "description": "Save at and support local Idaho businesses every day.",
+  "start_url": "/member/card",
+  "display": "standalone",
+  "background_color": "#3d1214",
+  "theme_color": "#3d1214",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

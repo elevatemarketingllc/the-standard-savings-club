@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { supabase } from '../../lib/supabase'
 import { RefreshCw, Eye, EyeOff } from 'lucide-react'
 
 export default function Login() {
@@ -23,7 +24,13 @@ export default function Login() {
       setError(error.message)
       setLoading(false)
     } else {
-      navigate('/member')
+      // Check if business user
+      const { data: bizUser } = await supabase
+        .from('business_users')
+        .select('id')
+        .eq('user_id', data.user.id)
+        .single()
+      navigate(bizUser ? '/business-portal' : '/member')
     }
   }
 

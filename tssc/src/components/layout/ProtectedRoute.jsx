@@ -1,19 +1,27 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
 export default function ProtectedRoute({ children, adminOnly = false }) {
-  const { user, loading } = useAuth()
+  const { user, loading, isBusiness } = useAuth()
+  const location = useLocation()
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-8 h-8 border-4 border-maroon-700 border-t-transparent rounded-full animate-spin" />
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="w-6 h-6 border-2 border-maroon-700 border-t-transparent rounded-full animate-spin" />
     </div>
   )
 
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/login" state={{ from: location }} replace />
 
-  if (adminOnly && user.email !== import.meta.env.VITE_ADMIN_EMAIL) {
-    return <Navigate to="/member" replace />
+  // Admin-only check
+  if (adminOnly && user.email !== 'elevatemarketingidaho@gmail.com') {
+    return <Navigate to={isBusiness ? '/business-portal' : '/member'} replace />
+  }
+
+  // Business users trying to access member-only routes
+  const memberOnlyPaths = ['/member', '/member/videos', '/member/forum', '/member/profile', '/member/card']
+  if (isBusiness && memberOnlyPaths.some(p => location.pathname.startsWith(p))) {
+    return <Navigate to="/business-portal" replace />
   }
 
   return children

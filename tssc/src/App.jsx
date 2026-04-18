@@ -19,6 +19,8 @@ import Profile from './pages/member/Profile'
 // Admin pages (protected)
 import AdminDashboard from './pages/admin/AdminDashboard'
 import BusinessLogin from './pages/auth/BusinessLogin'
+import ResetPassword from './pages/auth/ResetPassword'
+import NotFound from './pages/NotFound'
 import BusinessRegister from './pages/auth/BusinessRegister'
 import MemberCard from './pages/member/MemberCard'
 import Verify from './pages/Verify'
@@ -61,6 +63,8 @@ export default function App() {
           <Route path="/businesses" element={<BusinessDirectory />} />
           <Route path="/businesses/:slug" element={<BusinessPage />} />
           <Route path="/business-portal" element={<ProtectedRoute><BusinessPortal /></ProtectedRoute>} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
