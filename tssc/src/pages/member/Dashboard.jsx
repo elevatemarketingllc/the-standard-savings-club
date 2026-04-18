@@ -129,8 +129,13 @@ export default function Dashboard() {
               {partnerDeals.map(({ name, slug, deal, category, note }) => (
                 <Link to={`/businesses/${slug}`} key={name}
                   className="bg-white border border-gray-200 shadow-sm p-5 flex items-start gap-4 hover:border-maroon-200 hover:shadow-md transition-all group block">
-                  <div className="w-10 h-10 bg-maroon-100 rounded-full flex-shrink-0 flex items-center justify-center">
-                    <span className="font-heading text-lg font-bold text-maroon-700">{name.charAt(0)}</span>
+                  <div className="w-10 h-10 rounded-lg flex-shrink-0 overflow-hidden bg-gray-900">
+                    <img src={`/logos/${slug}.png`} alt={name}
+                      className="w-full h-full object-cover"
+                      onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex' }} />
+                    <span style={{display:'none'}} className="w-full h-full bg-maroon-100 items-center justify-center font-heading text-sm font-bold text-maroon-700 flex">
+                      {name.charAt(0)}
+                    </span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
