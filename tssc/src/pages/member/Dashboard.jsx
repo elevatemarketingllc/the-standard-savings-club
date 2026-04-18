@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { Video, MessageSquare, Tag, User, ExternalLink, X, Calendar, ChevronRight } from 'lucide-react'
+import { Video, MessageSquare, Tag, User, ExternalLink, X, Calendar, ChevronRight, CreditCard } from 'lucide-react'
 
 const STRIPE_PORTAL_URL = 'https://billing.stripe.com/p/login/28E28s1GVfxU2M4b0N3wQ00'
 
@@ -61,7 +61,7 @@ export default function Dashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Quick access */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
           {[
             { icon: Tag, label: 'My Discounts', desc: 'View partner deals', href: '#discounts', color: 'bg-maroon-700' },
             { icon: Video, label: 'Video Library', desc: 'Watch past sessions', href: '/member/videos', color: 'bg-maroon-800' },
