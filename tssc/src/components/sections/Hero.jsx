@@ -72,10 +72,10 @@ export default function Hero() {
                 Join Now — $33/Month
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="#how-it-works"
+              <Link to="/businesses"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/50 hover:border-white text-white/80 hover:text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-all duration-200">
-                See How It Works
-              </a>
+                Meet Our Partners
+              </Link>
             </div>
 
             <p className="text-white/50 text-xs mt-3 tracking-wide">Cancel anytime · No contracts · New deals added weekly</p>
