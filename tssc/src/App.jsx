@@ -18,6 +18,9 @@ import Profile from './pages/member/Profile'
 
 // Admin pages (protected)
 import AdminDashboard from './pages/admin/AdminDashboard'
+import BusinessDirectory from './pages/businesses/BusinessDirectory'
+import BusinessPage from './pages/businesses/BusinessPage'
+import BusinessPortal from './pages/business-portal/BusinessPortal'
 
 // Layout
 import Navbar from './components/layout/Navbar'
