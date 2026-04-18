@@ -24,6 +24,7 @@ export default function Navbar() {
             <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Home</Link>
             <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Join</Link>
             <Link to="/business" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">For Businesses</Link>
+            <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Partners</Link>
             {user ? (
               <>
                 <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">My Account</Link>
@@ -48,6 +49,7 @@ export default function Navbar() {
           <Link to="/" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Home</Link>
           <Link to="/join" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Join</Link>
           <Link to="/business" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>For Businesses</Link>
+          <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Partners</Link>
           {user ? (
             <>
               <Link to="/member" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>My Account</Link>

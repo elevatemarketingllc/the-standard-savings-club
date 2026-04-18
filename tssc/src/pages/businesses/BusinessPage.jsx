@@ -62,8 +62,16 @@ export default function BusinessPage() {
   }, [slug])
 
   const loadBusiness = async () => {
-    const { data } = await supabase.from('businesses').select('*').eq('slug', slug).single()
-    setBusiness(data || FALLBACK_BUSINESSES[slug] || null)
+    try {
+      const { data, error } = await supabase.from('businesses').select('*').eq('slug', slug).single()
+      if (error || !data) {
+        setBusiness(FALLBACK_BUSINESSES[slug] || null)
+      } else {
+        setBusiness(data)
+      }
+    } catch (e) {
+      setBusiness(FALLBACK_BUSINESSES[slug] || null)
+    }
     setLoading(false)
   }
 

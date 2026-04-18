@@ -35,8 +35,16 @@ export default function BusinessDirectory() {
   }, [])
 
   const loadBusinesses = async () => {
-    const { data } = await supabase.from('businesses').select('*').eq('active', true).order('featured', { ascending: false })
-    setBusinesses(data?.length ? data : FALLBACK)
+    try {
+      const { data, error } = await supabase.from('businesses').select('*').eq('active', true).order('featured', { ascending: false })
+      if (error || !data?.length) {
+        setBusinesses(FALLBACK)
+      } else {
+        setBusinesses(data)
+      }
+    } catch (e) {
+      setBusinesses(FALLBACK)
+    }
     setLoading(false)
   }
 

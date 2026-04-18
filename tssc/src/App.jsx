@@ -48,6 +48,9 @@ export default function App() {
 
           {/* Admin - protected + admin role */}
           <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/businesses" element={<BusinessDirectory />} />
+          <Route path="/businesses/:slug" element={<BusinessPage />} />
+          <Route path="/business-portal" element={<ProtectedRoute><BusinessPortal /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />
