@@ -1,26 +1,38 @@
-// Reusable wave divider component
-// topColor and bottomColor are hex values or CSS color strings
-export default function WaveDivider({ topColor, bottomColor, variant = 'wave', flip = false, height = 80 }) {
+// Place this INSIDE a section with `relative overflow-hidden` 
+// at position="bottom" or "top"
+// fill = the color that appears IN the wave shape (i.e. next section's bg color)
+export default function WaveDivider({ fill, variant = 'wave', position = 'bottom', height = 80 }) {
+  const w = 1440
+  const h = height
+
   const paths = {
-    wave: `M0,${height} C360,0 720,${height*1.5} 1440,${height*0.3} L1440,0 L0,0 Z`,
-    wave2: `M0,${height*0.5} C240,${height*1.2} 480,0 720,${height*0.6} C960,${height*1.1} 1200,${height*0.2} 1440,${height*0.7} L1440,0 L0,0 Z`,
-    tilt: `M0,${height} L1440,0 L1440,0 L0,0 Z`,
-    curve: `M0,${height} Q720,0 1440,${height} L1440,0 L0,0 Z`,
-    peaks: `M0,${height} L240,${height*0.2} L480,${height*0.8} L720,${height*0.1} L960,${height*0.9} L1200,${height*0.3} L1440,${height*0.7} L1440,0 L0,0 Z`,
+    wave:   `M0,${h*0.4} C320,${h*1.1} 720,0 1080,${h*0.6} C1260,${h*0.9} 1380,${h*0.3} ${w},${h*0.5} L${w},${h} L0,${h} Z`,
+    wave2:  `M0,${h*0.7} C200,${h*0.1} 500,${h} 800,${h*0.4} C1000,${h*0.05} 1250,${h*0.85} ${w},${h*0.5} L${w},${h} L0,${h} Z`,
+    curve:  `M0,${h*0.6} Q${w/2},0 ${w},${h*0.6} L${w},${h} L0,${h} Z`,
+    tilt:   `M0,${h} L${w},0 L${w},${h} Z`,
+    peaks:  `M0,${h} L180,${h*0.25} L360,${h*0.7} L${w/2},${h*0.1} L780,${h*0.65} L1000,${h*0.2} L1200,${h*0.55} L${w},${h*0.3} L${w},${h} Z`,
   }
 
+  const isBottom = position === 'bottom'
   const path = paths[variant] || paths.wave
 
   return (
-    <div className="relative w-full overflow-hidden leading-none" style={{ marginTop: `-${flip ? 0 : 2}px`, marginBottom: `-${flip ? 2 : 0}px` }}>
+    <div
+      className="absolute left-0 right-0 w-full overflow-hidden leading-none pointer-events-none"
+      style={{
+        bottom: isBottom ? 0 : 'auto',
+        top: isBottom ? 'auto' : 0,
+        height: `${h}px`,
+        transform: isBottom ? 'none' : 'scaleY(-1)',
+      }}
+    >
       <svg
-        viewBox={`0 0 1440 ${height}`}
+        viewBox={`0 0 ${w} ${h}`}
         preserveAspectRatio="none"
-        className="w-full block"
-        style={{ height: `${height}px`, display: 'block', transform: flip ? 'scaleY(-1)' : 'none', background: flip ? bottomColor : topColor }}
+        className="w-full h-full block"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d={path} fill={flip ? topColor : bottomColor} />
+        <path d={path} fill={fill} />
       </svg>
     </div>
   )

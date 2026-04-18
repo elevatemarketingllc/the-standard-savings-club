@@ -1,4 +1,5 @@
 import { DollarSign, Tag, Mic } from 'lucide-react'
+import WaveDivider from '../ui/WaveDivider'
 
 const props = [
   {
@@ -23,7 +24,7 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section className="bg-gray-50 pb-20 pt-8">
+    <section className="relative bg-gray-50 pb-28 pt-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="section-label">What You Get</div>
@@ -52,6 +53,8 @@ export default function ValueProps() {
           </p>
         </div>
       </div>
+    
+      <WaveDivider fill="#4a2526" variant="curve" height={80} />
     </section>
   )
 }

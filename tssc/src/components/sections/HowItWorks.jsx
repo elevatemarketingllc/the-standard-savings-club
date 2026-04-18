@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import WaveDivider from '../ui/WaveDivider'
 
 const steps = [
   { num: '01', title: 'Join for $33/Month', desc: 'Sign up online in minutes. Cancel anytime, no contracts, no commitments.' },
@@ -9,7 +10,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-maroon-900 text-white pb-20 pt-8">
+    <section id="how-it-works" className="relative bg-maroon-900 text-white pb-28 pt-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="font-heading text-xs tracking-widest uppercase text-maroon-200 mb-2">Simple Process</div>
@@ -35,6 +36,8 @@ export default function HowItWorks() {
           <p className="text-maroon-400 text-xs mt-3">$33/month · Cancel anytime</p>
         </div>
       </div>
+    
+      <WaveDivider fill="#ffffff" variant="wave2" height={80} />
     </section>
   )
 }

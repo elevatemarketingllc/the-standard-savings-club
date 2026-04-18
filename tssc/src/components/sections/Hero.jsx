@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+import WaveDivider from '../ui/WaveDivider'
 import { ArrowRight } from 'lucide-react'
 import boiseBg from '../../assets/boise.jpg'
 
 export default function Hero() {
   return (
-    <section className="relative bg-maroon-900 text-white overflow-hidden min-h-screen flex items-center">
+    <section className="relative bg-maroon-900 text-white overflow-hidden min-h-screen flex items-center pb-24">
 
       {/* Boise background image */}
       <div
@@ -119,6 +120,8 @@ export default function Hero() {
           </div>
         </div>
       </div>
+    
+      <WaveDivider fill="#f9fafb" variant="wave" height={80} />
     </section>
   )
 }

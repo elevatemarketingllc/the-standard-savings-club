@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import WaveDivider from '../ui/WaveDivider'
 import { Store, Users, TrendingUp } from 'lucide-react'
 
 const perks = [
@@ -9,7 +10,7 @@ const perks = [
 
 export default function ForBusinesses() {
   return (
-    <section className="bg-gray-50 pb-20 pt-8">
+    <section className="relative bg-gray-50 pb-28 pt-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -59,6 +60,8 @@ export default function ForBusinesses() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-center">
           <p className="text-gray-500 text-sm">Already a partner? <Link to="/business-login" className="text-maroon-700 hover:underline font-semibold">Access your business portal →</Link></p>
         </div>
-      </section>
+      
+      <WaveDivider fill="#4a2526" variant="peaks" height={80} />
+    </section>
   )
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import WaveDivider from '../ui/WaveDivider'
 
 const partners = [
   { slug: 'uncle-bens-haircuts', name: "Uncle Ben's Haircuts", deal: '$10 off every cut', category: 'Grooming', initials: 'UB', bg: '#1a1a2e', accent: '#6e383b' },
@@ -11,7 +12,7 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="pb-20 pt-8 bg-white">
+    <section className="relative pb-28 pt-8 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="font-heading text-xs tracking-widest uppercase text-maroon-700 mb-3">Treasure Valley</div>
@@ -45,6 +46,8 @@ export default function Partners() {
           </Link>
         </div>
       </div>
+    
+      <WaveDivider fill="#4a2526" variant="tilt" height={80} />
     </section>
   )
 }

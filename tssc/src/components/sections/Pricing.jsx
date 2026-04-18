@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import WaveDivider from '../ui/WaveDivider'
 import { Check } from 'lucide-react'
 
 const included = [
@@ -13,7 +14,7 @@ const included = [
 
 export default function Pricing() {
   return (
-    <section className="bg-maroon-900 text-white pb-20 pt-8">
+    <section className="relative bg-maroon-900 text-white pb-28 pt-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="font-heading text-xs tracking-widest uppercase text-maroon-200 mb-2">Membership</div>
@@ -47,6 +48,8 @@ export default function Pricing() {
           </div>
         </div>
       </div>
+    
+      <WaveDivider fill="#f9fafb" variant="wave" height={80} />
     </section>
   )
 }
