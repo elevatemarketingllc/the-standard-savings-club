@@ -19,10 +19,10 @@ export default function CallToAction() {
             Join for $33/Month
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <a href="mailto:Join@thestandardsavingsclub.com"
+          <Link to="/contact"
             className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-500 hover:text-maroon-200 text-white font-heading font-semibold tracking-widest uppercase px-10 py-5 text-lg transition-colors">
-            Contact Us
-          </a>
+            CONTACT US
+          </Link>
         </div>
         <p className="text-maroon-400 text-sm mt-6">$33/month · Cancel anytime · No contracts</p>
         <div className="mt-12 pt-8 border-t border-maroon-700">

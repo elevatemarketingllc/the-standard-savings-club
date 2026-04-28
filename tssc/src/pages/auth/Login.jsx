@@ -18,19 +18,22 @@ export default function Login() {
     setLoading(true)
     setError(null)
 
-    const { error } = await signIn(email, password)
+    const { error, data } = await signIn(email, password)
 
     if (error) {
-      setError(error.message)
+      setError('Incorrect email or password. Please try again.')
       setLoading(false)
     } else {
-      // Check if business user
-      const { data: bizUser } = await supabase
-        .from('business_users')
-        .select('id')
-        .eq('user_id', data.user.id)
-        .single()
-      navigate(bizUser ? '/business-portal' : '/member')
+      try {
+        const { data: bizUser } = await supabase
+          .from('business_users')
+          .select('id')
+          .eq('user_id', data.user.id)
+          .single()
+        navigate(bizUser ? '/business-portal' : '/member')
+      } catch {
+        navigate('/member')
+      }
     }
   }
 

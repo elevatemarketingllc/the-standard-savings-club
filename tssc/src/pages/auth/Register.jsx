@@ -157,6 +157,12 @@ export default function Register() {
                 {loading ? <><RefreshCw size={16} className="animate-spin" /> Creating Account...</> : 'Create My Account'}
               </button>
             </form>
+            <p className="text-xs text-gray-400 text-center mt-3">
+                By creating an account you agree to our{' '}
+                <Link to="/terms" className="text-maroon-700 hover:underline">Terms of Service</Link>
+                {' '}and{' '}
+                <Link to="/privacy" className="text-maroon-700 hover:underline">Privacy Policy</Link>.
+              </p>
             <div className="mt-6 pt-6 border-t border-gray-100 text-center">
               <p className="text-gray-500 text-sm">Already have an account? <Link to="/login" className="text-maroon-700 hover:text-maroon-900 font-semibold transition-colors">Sign In</Link></p>
             </div>
