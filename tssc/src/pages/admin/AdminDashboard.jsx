@@ -64,15 +64,14 @@ export default function AdminDashboard() {
       .order('created_at', { ascending: false })
     if (postsData) setPosts(postsData)
 
-    // Load videos from localStorage as simple storage
-    const storedVideos = JSON.parse(localStorage.getItem('tssc_videos') || '[]')
-    setVideos(storedVideos)
+    const { data: videoData } = await supabase.from('videos').select('*').order('created_at', { ascending: false })
+    setVideos(videoData || [])
 
     const { count: memberCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true })
 
     setStats({
       memberCount: memberCount || 0,
-      videos: storedVideos.length,
+      videos: videoData?.length || 0,
       posts: postsData?.length || 0,
     })
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
-import { ChevronLeft, MessageSquare, Plus, ThumbsUp, ChevronDown, ChevronUp, RefreshCw } from 'lucide-react'
+import { ChevronLeft, MessageSquare, Plus, ThumbsUp, ChevronDown, ChevronUp, RefreshCw, Trash2 } from 'lucide-react'
 
 function TimeAgo({ date }) {
   const diff = Date.now() - new Date(date).getTime()
@@ -41,13 +41,26 @@ function ReplyForm({ onSubmit, onCancel }) {
   )
 }
 
-function Post({ post, user, profile, onReply }) {
+function Post({ post, user, profile, onReply, onDelete }) {
   const [expanded, setExpanded] = useState(post.pinned)
   const [showReplyForm, setShowReplyForm] = useState(false)
   const [replies, setReplies] = useState([])
   const [loadingReplies, setLoadingReplies] = useState(false)
   const [liked, setLiked] = useState(false)
   const [likeCount, setLikeCount] = useState(post.likes || 0)
+  const isAuthor = user?.id === post.user_id
+
+  const handleDeletePost = async () => {
+    if (!window.confirm('Delete this post?')) return
+    await supabase.from('forum_posts').delete().eq('id', post.id)
+    onDelete?.(post.id)
+  }
+
+  const handleDeleteReply = async (replyId) => {
+    if (!window.confirm('Delete this reply?')) return
+    await supabase.from('forum_replies').delete().eq('id', replyId)
+    setReplies(r => r.filter(reply => reply.id !== replyId))
+  }
 
   useEffect(() => {
     if (expanded && replies.length === 0) loadReplies()
@@ -150,6 +163,8 @@ function Post({ post, user, profile, onReply }) {
 export default function Forum() {
   const { user } = useAuth()
   const [posts, setPosts] = useState([])
+
+  const handleDeletePost = (id) => setPosts(p => p.filter(post => post.id !== id))
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [showNewPost, setShowNewPost] = useState(false)
