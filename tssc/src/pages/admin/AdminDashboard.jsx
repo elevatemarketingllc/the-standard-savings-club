@@ -31,7 +31,7 @@ export default function AdminDashboard() {
   const [members, setMembers] = useState([])
   const [videos, setVideos] = useState([])
   const [posts, setPosts] = useState([])
-  const [stats, setStats] = useState({ members: 0, videos: 0, posts: 0 })
+  const [stats, setStats] = useState({ memberCount: 0, videos: 0, posts: 0 })
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('overview')
 
@@ -68,8 +68,10 @@ export default function AdminDashboard() {
     const storedVideos = JSON.parse(localStorage.getItem('tssc_videos') || '[]')
     setVideos(storedVideos)
 
+    const { count: memberCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true })
+
     setStats({
-      members: 0, // Would come from Stripe in production
+      memberCount: memberCount || 0,
       videos: storedVideos.length,
       posts: postsData?.length || 0,
     })
@@ -183,7 +185,7 @@ export default function AdminDashboard() {
               {[
                 { label: 'Forum Posts', value: stats.posts, icon: MessageSquare, note: 'Total community posts' },
                 { label: 'Videos', value: stats.videos, icon: Video, note: 'In the video library' },
-                { label: 'Members', value: 'Stripe', icon: Users, note: 'Check Stripe dashboard' },
+                { label: 'Members', value: stats.memberCount ?? 0, icon: Users, note: 'Registered accounts' },
               ].map(({ label, value, icon: Icon, note }) => (
                 <div key={label} className="bg-white border border-gray-200 shadow-sm p-6">
                   <div className="flex items-center gap-3 mb-3">
