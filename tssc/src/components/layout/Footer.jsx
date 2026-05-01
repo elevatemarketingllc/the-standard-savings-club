@@ -18,6 +18,8 @@ export default function Footer() {
               <li><Link to="/contact" className="hover:text-maroon-200 transition-colors">Contact Us</Link></li>
               <li><Link to="/login" className="hover:text-maroon-200 transition-colors">Member Login</Link></li>
               <li><Link to="/business-login" className="hover:text-maroon-200 transition-colors">Business Portal</Link></li>
+              <li><Link to="/terms" className="hover:text-maroon-200 transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="hover:text-maroon-200 transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           <div>
@@ -30,6 +32,13 @@ export default function Footer() {
         </div>
         <div className="border-t border-maroon-700 pt-6 text-center text-sm text-gray-400">
           <p>© {new Date().getFullYear()} The Standard Savings Club. All rights reserved. · Boise, Idaho</p>
+          <div className="flex items-center justify-center gap-4 mt-2 text-xs text-maroon-500">
+            <Link to="/terms" className="hover:text-maroon-300 transition-colors">Terms of Service</Link>
+            <span>·</span>
+            <Link to="/privacy" className="hover:text-maroon-300 transition-colors">Privacy Policy</Link>
+            <span>·</span>
+            <Link to="/contact" className="hover:text-maroon-300 transition-colors">Contact</Link>
+          </div>
           <p className="mt-2 text-xs text-maroon-600">
             Built by{' '}
             <a href="https://elevatemarketingidaho.com" target="_blank" rel="noreferrer" className="hover:text-maroon-400 transition-colors">
