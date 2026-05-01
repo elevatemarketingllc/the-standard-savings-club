@@ -10,6 +10,19 @@ export default function BusinessLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [forgotMode, setForgotMode] = useState(false)
+  const [resetSent, setResetSent] = useState(false)
+  const [resetLoading, setResetLoading] = useState(false)
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault()
+    setResetLoading(true)
+    await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://thestandardsavingsclub.com/reset-password',
+    })
+    setResetSent(true)
+    setResetLoading(false)
+  }
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
