@@ -24,6 +24,7 @@ import NotFound from './pages/NotFound'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import Contact from './pages/Contact'
+import ForBusinessesPage from './pages/ForBusinesses'
 import BusinessRegister from './pages/auth/BusinessRegister'
 import MemberCard from './pages/member/MemberCard'
 import Verify from './pages/Verify'
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/for-businesses" element={<ForBusinessesPage />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
