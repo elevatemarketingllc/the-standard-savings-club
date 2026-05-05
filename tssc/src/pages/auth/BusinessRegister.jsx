@@ -29,7 +29,18 @@ export default function BusinessRegister() {
       business_name: form.businessName,
       account_type: 'business',
     })
-    if (error) { setError(error.message); setLoading(false) }
+    if (error) {
+      let msg = error.message
+      if (msg.toLowerCase().includes('already registered') || msg.toLowerCase().includes('already been registered')) {
+        msg = 'This email is already registered. If you have an existing account, go to the Business Portal login and sign in there — or contact Ben to have your account linked to your business.'
+      } else if (msg.toLowerCase().includes('rate limit') || msg.toLowerCase().includes('too many')) {
+        msg = 'Too many sign-up attempts. Please wait a few minutes and try again.'
+      } else if (msg.toLowerCase().includes('invalid email')) {
+        msg = 'Please enter a valid email address.'
+      }
+      setError(msg)
+      setLoading(false)
+    }
     else { setSuccess(true); setLoading(false) }
   }
 
@@ -79,7 +90,16 @@ export default function BusinessRegister() {
               </p>
             </div>
 
-            {error && <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 mb-6">{error}</div>}
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 mb-6">
+                <p>{error}</p>
+                {error.includes('already registered') && (
+                  <p className="mt-2">
+                    <Link to="/business-login" className="font-semibold underline">Go to Business Login →</Link>
+                  </p>
+                )}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
