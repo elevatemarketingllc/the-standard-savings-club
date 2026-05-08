@@ -8,6 +8,19 @@ import {
 
 const SECTIONS = ['overview', 'deal', 'links', 'hours', 'photos']
 
+const InputRow = ({ icon: Icon, label, hint, children }) => (
+  <div className="flex items-start gap-4">
+    <div className="w-9 h-9 bg-maroon-50 rounded-full flex items-center justify-center flex-shrink-0 mt-5">
+      <Icon size={15} className="text-maroon-700" />
+    </div>
+    <div className="flex-1">
+      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">{label}</label>
+      {children}
+      {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
+    </div>
+  </div>
+)
+
 export default function BusinessPortal() {
   const { user, signOut } = useAuth()
   const [business, setBusiness] = useState(null)
@@ -138,19 +151,6 @@ export default function BusinessPortal() {
         <a href="mailto:Join@thestandardsavingsclub.com" className="inline-flex items-center gap-2 bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-xs tracking-widest uppercase px-5 py-3 transition-colors">
           Contact Us
         </a>
-      </div>
-    </div>
-  )
-
-  const InputRow = ({ icon: Icon, label, hint, children }) => (
-    <div className="flex items-start gap-4">
-      <div className="w-9 h-9 bg-maroon-50 rounded-full flex items-center justify-center flex-shrink-0 mt-5">
-        <Icon size={15} className="text-maroon-700" />
-      </div>
-      <div className="flex-1">
-        <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">{label}</label>
-        {children}
-        {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
       </div>
     </div>
   )
