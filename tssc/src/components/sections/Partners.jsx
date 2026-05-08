@@ -21,16 +21,16 @@ export default function Partners() {
           <p className="text-gray-600 max-w-xl mx-auto">Six hand-picked local businesses offering exclusive deals to Standard Savings Club members.</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-10">
           {partners.map(({ slug, name, deal, category, initials, bg, accent }) => (
             <Link key={slug} to={`/businesses/${slug}`}
-              className="group flex flex-col items-center text-center p-4 hover:bg-gray-50 rounded-lg transition-colors">
+              className="group flex flex-col items-center text-center p-3 hover:bg-gray-50 rounded-lg transition-colors">
               {/* Logo */}
-              <div className="w-16 h-16 rounded-xl mb-3 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:shadow-md transition-shadow overflow-hidden"
+              <div className="w-28 h-28 rounded-2xl mb-3 flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow overflow-hidden"
                 style={{ backgroundColor: bg }}>
-                <img src={`/logos/${slug}.png`} alt={name} className="w-full h-full object-contain p-1.5"
+                <img src={`/logos/${slug}.png`} alt={name} className="w-full h-full object-contain p-2"
                   onError={e => { e.target.style.display = 'none'; e.target.parentNode.querySelector('.fallback').style.display = 'flex' }} />
-                <span className="fallback hidden w-full h-full items-center justify-center font-heading font-bold text-white text-lg"
+                <span className="fallback hidden w-full h-full items-center justify-center font-heading font-bold text-white text-2xl"
                   style={{ backgroundColor: bg }}>{initials}</span>
               </div>
               <div className="font-heading text-xs uppercase text-maroon-900 leading-tight mb-1">{name}</div>
