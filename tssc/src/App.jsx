@@ -1,10 +1,9 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 
 // Public pages
 import Home from './pages/Home'
 import Join from './pages/Join'
-import BusinessSignup from './pages/BusinessSignup'
 import BusinessJoin from './pages/BusinessJoin'
 import OurMission from './pages/OurMission'
 
@@ -49,7 +48,7 @@ export default function App() {
           {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="/join" element={<Join />} />
-          <Route path="/business" element={<BusinessSignup />} />
+          <Route path="/business" element={<Navigate to="/for-businesses" replace />} />
           <Route path="/business-join" element={<BusinessJoin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/business-login" element={<BusinessLogin />} />
