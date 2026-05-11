@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
+import ScrollToTop from './components/ui/ScrollToTop'
 
 // Public pages
 import Home from './pages/Home'
@@ -44,6 +45,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
+        <ScrollToTop />
         <Routes>
           {/* Public */}
           <Route path="/" element={<Home />} />
