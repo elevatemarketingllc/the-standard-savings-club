@@ -42,7 +42,7 @@ export default function MissionSection() {
               {
                 num: '01',
                 title: 'Community Over Clicks',
-                body: 'Instead of competing for random internet traffic, we're building a platform where local businesses gain exposure to real local families and customers.',
+                body: "Instead of competing for random internet traffic, we're building a platform where local businesses gain exposure to real local families and customers.",
               },
               {
                 num: '02',
