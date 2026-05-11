@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Check, ArrowRight, Store, Users, TrendingUp, Star, ChevronRight } from 'lucide-react'
 
 // ⚠️ Replace with your real business Stripe Payment Link after creating it in Stripe Dashboard
-const BUSINESS_STRIPE_LINK = 'https://buy.stripe.com/REPLACE_WITH_BUSINESS_LINK'
+const BUSINESS_STRIPE_LINK = 'https://buy.stripe.com/28EdRagBP1H4cmE2uh3wQ01'
 
 const included = [
   'Your own business profile page with logo, photos & deal',
@@ -70,26 +70,24 @@ export default function BusinessJoin() {
               {/* Intro badge */}
               <div className="inline-flex items-center gap-2 bg-maroon-700 border border-maroon-600 px-3 py-1.5 mb-5">
                 <Star size={12} className="text-yellow-400 fill-yellow-400" />
-                <span className="font-heading text-xs tracking-widest uppercase text-yellow-300">Introductory Offer</span>
+                <span className="font-heading text-xs tracking-widest uppercase text-yellow-300">Partner Pricing</span>
               </div>
 
               {/* Pricing */}
               <div className="mb-2">
-                <span className="font-heading text-7xl font-bold">$33</span>
+                <span className="font-heading text-7xl font-bold">$333</span>
                 <span className="font-heading text-xl text-maroon-300 uppercase"> / mo</span>
               </div>
-              <p className="text-maroon-300 text-sm mb-1">For your first 3 months</p>
+              <p className="text-maroon-300 text-sm mb-1">Standard partner rate</p>
               <div className="flex items-center gap-2 mb-6">
                 <ChevronRight size={14} className="text-maroon-500" />
-                <p className="text-maroon-400 text-sm">Then just <strong className="text-maroon-200">$333/month</strong> — cancel anytime</p>
+                <p className="text-maroon-400 text-sm">Have a code from Ben? <strong className="text-maroon-200">Enter it at checkout</strong> to unlock your intro rate</p>
               </div>
 
-              {/* Value callout */}
               <div className="bg-maroon-800 border border-maroon-600 p-4 mb-6 text-center">
                 <p className="text-maroon-300 text-xs leading-relaxed">
-                  Regular members pay $33/mo for access to your deal.<br />
-                  <span className="text-white font-semibold">You start at that same price.</span><br />
-                  Try the network for 3 months, then decide.
+                  Have a code from Ben? Enter it at checkout to unlock your intro rate.<br />
+                  <span className="text-white font-semibold">TSSC1</span> — 1 month at $33 &nbsp;·&nbsp; <span className="text-white font-semibold">TSSC3</span> — 3 months at $33
                 </p>
               </div>
 

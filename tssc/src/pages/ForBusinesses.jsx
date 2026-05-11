@@ -145,9 +145,9 @@ export default function ForBusinesses() {
                 <p className="font-heading text-xs tracking-widest uppercase text-maroon-700 mb-5">Getting Started</p>
                 <div className="space-y-5">
                   {[
-                    { n: '01', t: 'Choose Your Plan', d: 'Start at $33/month for your first 3 months — same as a member. See our intro offer.' },
-                    { n: '02', t: 'Pay via Stripe', d: 'Secure checkout. After month 3 it moves to $333/month automatically. Cancel anytime.' },
-                    { n: '03', t: 'Create Your Account', d: 'Set up your login after payment. Ben links your account to your page within 24 hours.' },
+                    { n: '01', t: 'Get a Code from Ben', d: 'Reach out to Ben directly — he\'ll give you a discount code based on your situation. TSSC1 (1 month) or TSSC3 (3 months) at $33.' },
+                    { n: '02', t: 'Pay via Stripe', d: 'Click Partner With Us, enter your code at checkout, and pay securely. Standard rate is $333/month.' },
+                    { n: '03', t: 'Create Your Account', d: 'Stripe sends you back here to create your login. Ben links your account to your page within 24 hours.' },
                     { n: '04', t: 'Go Live', d: 'Upload your logo, add your deal, fill in your story — and start reaching members the same day.' },
                   ].map(({ n, t, d }) => (
                     <div key={n} className="flex gap-4 items-start">
@@ -161,24 +161,24 @@ export default function ForBusinesses() {
                 </div>
               </div>
 
-              {/* Intro pricing callout */}
+              {/* Pricing callout */}
               <div className="bg-maroon-900 text-white p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Star size={13} className="text-yellow-400 fill-yellow-400" />
-                  <span className="font-heading text-xs tracking-widest uppercase text-yellow-300">Intro Offer</span>
+                  <span className="font-heading text-xs tracking-widest uppercase text-yellow-300">Partner Pricing</span>
                 </div>
                 <div className="flex items-end gap-2 mb-1">
-                  <span className="font-heading text-5xl font-bold">$33</span>
+                  <span className="font-heading text-5xl font-bold">$333</span>
                   <span className="font-heading text-lg text-maroon-300 uppercase pb-1">/ month</span>
                 </div>
-                <p className="text-maroon-300 text-sm mb-1">For your first 3 months</p>
+                <p className="text-maroon-300 text-sm mb-1">Standard partner rate · cancel anytime</p>
                 <div className="flex items-center gap-2 mb-5">
                   <ChevronRight size={13} className="text-maroon-500" />
-                  <p className="text-maroon-400 text-sm">Then <strong className="text-maroon-200">$333/month</strong> · cancel anytime</p>
+                  <p className="text-maroon-400 text-sm">Have a code from Ben? <strong className="text-maroon-200">Drops to $33/mo</strong> for your intro period</p>
                 </div>
                 <Link to="/business-join"
                   className="flex items-center justify-center gap-2 w-full bg-white text-maroon-900 hover:bg-gray-100 font-heading text-xs font-bold tracking-widest uppercase py-4 transition-colors">
-                  See Full Pricing <ArrowRight size={14} />
+                  Partner With Us <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function ForBusinesses() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/business-join"
               className="inline-flex items-center gap-2 bg-white text-maroon-900 hover:bg-gray-100 font-heading text-sm font-bold tracking-widest uppercase px-10 py-5 transition-colors">
-              Partner With Us — $33/mo <ArrowRight size={16} />
+              Partner With Us <ArrowRight size={16} />
             </Link>
             <a href="mailto:Join@thestandardsavingsclub.com"
               className="inline-flex items-center justify-center border-2 border-maroon-600 text-maroon-200 hover:text-white hover:border-maroon-400 font-heading text-sm tracking-widest uppercase px-10 py-5 transition-colors">
