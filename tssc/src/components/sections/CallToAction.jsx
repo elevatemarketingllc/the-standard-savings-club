@@ -11,7 +11,7 @@ export default function CallToAction() {
         </h2>
         <div className="w-16 h-1 bg-maroon-700 mx-auto mb-8" />
         <p className="text-maroon-200 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-          Join hundreds of Treasure Valley locals saving money and supporting the businesses that make Boise great.
+          Join Treasure Valley locals saving money and supporting the businesses that make Boise great — while building real connections with the people behind them.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/join"
@@ -20,14 +20,20 @@ export default function CallToAction() {
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link to="/contact"
-            className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-500 hover:text-maroon-200 text-white font-heading font-semibold tracking-widest uppercase px-10 py-5 text-lg transition-colors">
-            CONTACT US
+            className="inline-flex items-center justify-center gap-2 border-2 border-maroon-500 hover:border-maroon-400 hover:text-maroon-200 text-white font-heading font-semibold tracking-widest uppercase px-10 py-5 text-lg transition-colors">
+            Contact Us
           </Link>
         </div>
         <p className="text-maroon-400 text-sm mt-6">$33/month · Cancel anytime · No contracts</p>
-        <div className="mt-12 pt-8 border-t border-maroon-700">
-          <p className="font-heading text-xs tracking-widest uppercase text-maroon-400 mb-3">Bringing the Power of Word-of-Mouth Marketing Back to Life</p>
-          <p className="text-maroon-300 text-sm">thestandardsavingsclub.com · Boise, Idaho</p>
+
+        <div className="mt-12 pt-8 border-t border-maroon-700 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <p className="font-heading text-xs tracking-widest uppercase text-maroon-400">
+            Bringing the Power of Word-of-Mouth Marketing Back to Life
+          </p>
+          <Link to="/our-mission"
+            className="font-heading text-xs tracking-widest uppercase text-maroon-500 hover:text-maroon-300 transition-colors flex items-center gap-1">
+            Read Our Mission <ArrowRight size={10} />
+          </Link>
         </div>
       </div>
     </section>

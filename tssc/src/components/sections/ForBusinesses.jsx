@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import WaveDivider from '../ui/WaveDivider'
-import { Store, Users, TrendingUp } from 'lucide-react'
+import { Store, Users, TrendingUp, ArrowRight } from 'lucide-react'
 
 const perks = [
-  { icon: Users, title: 'Direct Access to Members', desc: 'Promote your offer to local members who are already looking to support businesses like yours.' },
-  { icon: TrendingUp, title: 'Word-of-Mouth Marketing', desc: 'Get in front of a growing community of Boise locals who actively share deals with friends and family.' },
-  { icon: Store, title: 'Weekly Zoom Exposure', desc: 'Be featured on our weekly live Zoom calls and introduce your business directly to engaged members.' },
+  { icon: Users, title: 'Real Relationships', desc: 'Reach members who are already looking to support local. No ads, no algorithms — just real community word-of-mouth.' },
+  { icon: TrendingUp, title: 'Active Promotion', desc: 'We promote your business through social media, email, spotlights, owner interviews, and weekly live Zoom calls — not just a listing.' },
+  { icon: Store, title: 'Your Story, Front & Center', desc: 'We want members to know who you are and why you do what you do. The story behind the business matters here.' },
 ]
 
 export default function ForBusinesses() {
@@ -20,27 +20,28 @@ export default function ForBusinesses() {
             </h2>
             <div className="w-16 h-1 bg-maroon-700 mb-8" />
             <p className="text-gray-600 leading-relaxed mb-4">
-              Stop by an Uncle Ben's Haircuts location to speak directly with Ben, or send us an email to get your business listed.
+              Most marketing companies try to sell businesses ads, clicks, and promises. We're trying to do something different.
             </p>
             <p className="text-gray-600 leading-relaxed mb-8">
-              Local businesses helping local businesses. Promote your offer to members who want to support you.
+              We're looking for local businesses that want to <strong className="text-maroon-900">grow with the community</strong> — not just advertise to it. If that sounds like something you'd like to be part of, we'd love to connect.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/business"
-                className="inline-flex items-center justify-center bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-colors">
+              <Link to="/for-businesses"
+                className="inline-flex items-center justify-center gap-2 bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-colors group">
+                Learn More <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/business-join"
+                className="inline-flex items-center justify-center border-2 border-maroon-700 text-maroon-700 hover:bg-maroon-700 hover:text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-colors">
                 Partner With Us
               </Link>
-              <a href="mailto:Join@thestandardsavingsclub.com"
-                className="inline-flex items-center justify-center border-2 border-maroon-700 text-maroon-700 hover:bg-maroon-700 hover:text-white font-heading text-sm font-semibold tracking-widest uppercase px-8 py-4 transition-colors">
-                Email Us
-              </a>
             </div>
+            <p className="text-gray-400 text-xs mt-4">Intro offer: $33/month for your first 3 months, then $333/month</p>
           </div>
 
           <div className="space-y-6">
             {perks.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white border border-gray-100 shadow-sm p-6 flex gap-5 items-start group hover:border-maroon-200 transition-colors">
-                <div className="w-12 h-12 bg-maroon-700 group-hover:bg-maroon-700 rounded-full flex-shrink-0 flex items-center justify-center transition-colors">
+                <div className="w-12 h-12 bg-maroon-700 rounded-full flex-shrink-0 flex items-center justify-center">
                   <Icon size={20} className="text-white" />
                 </div>
                 <div>
@@ -50,17 +51,21 @@ export default function ForBusinesses() {
               </div>
             ))}
 
-            <div className="bg-maroon-700 text-white p-6">
-              <p className="font-heading text-sm tracking-widest uppercase text-maroon-200 mb-1">Partners Added Weekly</p>
-              <p className="text-maroon-200 text-sm">Join a growing network of Treasure Valley businesses reaching local members every day.</p>
+            <div className="bg-maroon-900 text-white p-6">
+              <p className="font-heading text-sm tracking-widest uppercase text-maroon-300 mb-1">Our Goal Is Simple</p>
+              <p className="text-maroon-200 text-sm">Bring the power of word-of-mouth marketing back to local business.</p>
+              <Link to="/our-mission" className="inline-flex items-center gap-1 text-maroon-400 hover:text-white text-xs font-heading tracking-widest uppercase mt-3 transition-colors">
+                Read Our Mission <ArrowRight size={11} />
+              </Link>
             </div>
           </div>
         </div>
       </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-center">
-          <p className="text-gray-500 text-sm">Already a partner? <Link to="/business-login" className="text-maroon-700 hover:underline font-semibold">Access your business portal →</Link></p>
-        </div>
-      
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 text-center">
+        <p className="text-gray-500 text-sm">Already a partner? <Link to="/business-login" className="text-maroon-700 hover:underline font-semibold">Access your business portal →</Link></p>
+      </div>
+
       <WaveDivider fill="#4a2526" variant="peaks" height={80} />
     </section>
   )

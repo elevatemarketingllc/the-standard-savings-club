@@ -1,6 +1,7 @@
 import Hero from '../components/sections/Hero'
 import ValueProps from '../components/sections/ValueProps'
 import HowItWorks from '../components/sections/HowItWorks'
+import MissionSection from '../components/sections/MissionSection'
 import Partners from '../components/sections/Partners'
 import Pricing from '../components/sections/Pricing'
 import ForBusinesses from '../components/sections/ForBusinesses'
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <ValueProps />
       <HowItWorks />
+      <MissionSection />
       <Partners />
       <Pricing />
       <ForBusinesses />

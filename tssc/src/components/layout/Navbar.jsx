@@ -50,6 +50,7 @@ export default function Navbar() {
               <>
                 <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Home</Link>
                 <Link to="/join" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Join</Link>
+                <Link to="/our-mission" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Our Mission</Link>
                 <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">For Businesses</Link>
                 <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Partners</Link>
                 <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Login</Link>
@@ -89,6 +90,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link to="/" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Home</Link>
+              <Link to="/our-mission" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Our Mission</Link>
               <Link to="/join" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Join</Link>
               <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>For Businesses</Link>
               <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Partners</Link>
