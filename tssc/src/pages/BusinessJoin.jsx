@@ -85,9 +85,8 @@ export default function BusinessJoin() {
               </div>
 
               <div className="bg-maroon-800 border border-maroon-600 p-4 mb-6 text-center">
-                <p className="text-maroon-300 text-xs leading-relaxed">
-                  Have a code from Ben? Enter it at checkout to unlock your intro rate.<br />
-                  <span className="text-white font-semibold">TSSC1</span> — 1 month at $33 &nbsp;·&nbsp; <span className="text-white font-semibold">TSSC3</span> — 3 months at $33
+                <p className="text-maroon-300 text-sm leading-relaxed">
+                  Have a code from Ben? Enter it at checkout to unlock your intro rate.
                 </p>
               </div>
 

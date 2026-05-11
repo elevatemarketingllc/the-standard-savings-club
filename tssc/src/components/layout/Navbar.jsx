@@ -24,7 +24,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4">
             {isBusiness ? (
               // Business nav
               <>
@@ -54,6 +54,10 @@ export default function Navbar() {
                 <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">For Businesses</Link>
                 <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Partners</Link>
                 <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Login</Link>
+                <Link to="/business-login"
+                  className="flex items-center gap-1.5 text-sm font-heading tracking-wider uppercase text-maroon-300 hover:text-white transition-colors">
+                  <Building2 size={13} /> Business Login
+                </Link>
                 <Link to="/join"
                   className="border border-white hover:bg-white hover:text-maroon-900 text-sm font-heading tracking-wider uppercase px-4 py-1.5 transition-colors">
                   Join — $33/mo
@@ -94,8 +98,12 @@ export default function Navbar() {
               <Link to="/join" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Join</Link>
               <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>For Businesses</Link>
               <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Partners</Link>
-              <Link to="/login" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Member Login</Link>
-              <Link to="/business-login" className="text-sm font-heading tracking-wider uppercase py-2 text-maroon-300" onClick={() => setMobileOpen(false)}>Business Login</Link>
+              <div className="border-t border-maroon-700 pt-3 mt-1 flex flex-col gap-3">
+                <Link to="/login" className="text-sm font-heading tracking-wider uppercase py-1 text-maroon-300" onClick={() => setMobileOpen(false)}>Member Login</Link>
+                <Link to="/business-login" className="text-sm font-heading tracking-wider uppercase py-1 text-maroon-300 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
+                  <Building2 size={13} /> Business Login
+                </Link>
+              </div>
               <Link to="/join" className="bg-white text-maroon-900 text-center font-heading text-sm tracking-wider uppercase px-4 py-3 mt-1" onClick={() => setMobileOpen(false)}>
                 Join — $33/mo
               </Link>
