@@ -5,6 +5,7 @@ import { useAuth } from './context/AuthContext'
 import Home from './pages/Home'
 import Join from './pages/Join'
 import BusinessSignup from './pages/BusinessSignup'
+import BusinessJoin from './pages/BusinessJoin'
 
 // Auth pages
 import Login from './pages/auth/Login'
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/join" element={<Join />} />
           <Route path="/business" element={<BusinessSignup />} />
+          <Route path="/business-join" element={<BusinessJoin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/business-login" element={<BusinessLogin />} />
           <Route path="/business-register" element={<BusinessRegister />} />
