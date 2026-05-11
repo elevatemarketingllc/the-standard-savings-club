@@ -121,9 +121,8 @@ export default function Login() {
                 </Link>
               </p>
               <p className="text-gray-400 text-xs">
-                Just signed up?{' '}
-                <Link to="/join" className="text-maroon-700 hover:text-maroon-900 transition-colors">
-                  Create your account here
+                <Link to="/reset-password" className="text-maroon-600 hover:text-maroon-900 transition-colors">
+                  Forgot your password?
                 </Link>
               </p>
             </div>

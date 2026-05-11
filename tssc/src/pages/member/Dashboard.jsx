@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { supabase } from '../../lib/supabase'
 import { Video, MessageSquare, Tag, User, ExternalLink, X, Calendar, ChevronRight, CreditCard } from 'lucide-react'
 
 const STRIPE_PORTAL_URL = 'https://billing.stripe.com/p/login/28E28s1GVfxU2M4b0N3wQ00'
 
-const upcomingZooms = [
-  { date: 'Every Wednesday', time: '7:00 PM MST', title: 'Weekly Business Owner Zoom', desc: 'Live Q&A with local Treasure Valley business owners.' },
-  { date: 'Every Saturday', time: '10:00 AM MST', title: 'Member Spotlight Session', desc: 'Featured member stories and community updates.' },
-]
-
-const partnerDeals = [
+const FALLBACK_DEALS = [
   { name: "Uncle Ben's Haircuts", slug: 'uncle-bens-haircuts', deal: '$10 off every haircut', category: 'Grooming', note: 'Automatic at checkout — just show your membership' },
   { name: 'Cowboy Burger', slug: 'cowboy-burger', deal: 'Members-only discount', category: 'Restaurant', note: 'Show your member card at the counter' },
   { name: 'Opal Teeth Whitening Studio', slug: 'opal-teeth-whitening', deal: 'Exclusive member rate', category: 'Health & Beauty', note: 'Mention The Standard Savings Club when booking' },
@@ -19,11 +15,32 @@ const partnerDeals = [
   { name: 'Elevate Marketing', slug: 'elevate-marketing', deal: 'Member consultation rate', category: 'Marketing', note: 'Contact directly and mention The Standard' },
 ]
 
+const upcomingZooms = [
+  { date: 'Every Wednesday', time: '7:00 PM MST', title: 'Weekly Business Owner Zoom', desc: 'Live Q&A with local Treasure Valley business owners.' },
+  { date: 'Every Saturday', time: '10:00 AM MST', title: 'Member Spotlight Session', desc: 'Featured member stories and community updates.' },
+]
+
 export default function Dashboard() {
   const { user, signOut } = useAuth()
   const [searchParams] = useSearchParams()
   const [showWelcome, setShowWelcome] = useState(searchParams.get('welcome') === 'true')
+  const [partnerDeals, setPartnerDeals] = useState(FALLBACK_DEALS)
   const firstName = user?.user_metadata?.first_name || user?.email?.split('@')[0] || 'Member'
+
+  useEffect(() => {
+    supabase.from('businesses').select('name, slug, deal, category, description').eq('active', true).order('featured', { ascending: false })
+      .then(({ data }) => {
+        if (data?.length) {
+          setPartnerDeals(data.map(b => ({
+            name: b.name,
+            slug: b.slug,
+            deal: b.deal || 'Member discount',
+            category: b.category || '',
+            note: b.description || 'Show your membership card to redeem',
+          })))
+        }
+      })
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-50">

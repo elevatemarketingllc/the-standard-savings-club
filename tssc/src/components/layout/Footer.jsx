@@ -13,7 +13,9 @@ export default function Footer() {
             <h4 className="font-heading tracking-widest uppercase mb-4 text-sm">Quick Links</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li><Link to="/" className="hover:text-maroon-200 transition-colors">Home</Link></li>
+              <li><Link to="/our-mission" className="hover:text-maroon-200 transition-colors">Our Mission</Link></li>
               <li><Link to="/join" className="hover:text-maroon-200 transition-colors">Join — $33/mo</Link></li>
+              <li><Link to="/for-businesses" className="hover:text-maroon-200 transition-colors">For Businesses</Link></li>
               <li><Link to="/businesses" className="hover:text-maroon-200 transition-colors">Partner Directory</Link></li>
               <li><Link to="/contact" className="hover:text-maroon-200 transition-colors">Contact Us</Link></li>
               <li><Link to="/login" className="hover:text-maroon-200 transition-colors">Member Login</Link></li>
