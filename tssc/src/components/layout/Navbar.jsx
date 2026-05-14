@@ -39,6 +39,7 @@ export default function Navbar() {
               <>
                 <Link to="/" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Home</Link>
                 <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Partners</Link>
+                <Link to="/events" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Events</Link>
                 <Link to="/member" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">My Account</Link>
                 <button onClick={handleSignOut}
                   className="border border-maroon-600 hover:border-white text-sm font-heading tracking-wider uppercase px-4 py-1.5 transition-colors">
@@ -53,6 +54,7 @@ export default function Navbar() {
                 <Link to="/our-mission" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Our Mission</Link>
                 <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">For Businesses</Link>
                 <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Partners</Link>
+                <Link to="/events" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Events</Link>
                 <Link to="/login" className="text-sm font-heading tracking-wider uppercase hover:text-white transition-colors">Login</Link>
                 <Link to="/business-login"
                   className="flex items-center gap-1.5 text-sm font-heading tracking-wider uppercase text-maroon-300 hover:text-white transition-colors">
@@ -88,6 +90,7 @@ export default function Navbar() {
             <>
               <Link to="/" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Home</Link>
               <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Partners</Link>
+              <Link to="/events" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Events</Link>
               <Link to="/member" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>My Account</Link>
               <button onClick={handleSignOut} className="text-sm font-heading tracking-wider uppercase py-2 text-left text-maroon-300">Sign Out</button>
             </>
@@ -98,6 +101,7 @@ export default function Navbar() {
               <Link to="/join" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Join</Link>
               <Link to="/for-businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>For Businesses</Link>
               <Link to="/businesses" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Partners</Link>
+              <Link to="/events" className="text-sm font-heading tracking-wider uppercase py-2" onClick={() => setMobileOpen(false)}>Events</Link>
               <div className="border-t border-maroon-700 pt-3 mt-1 flex flex-col gap-3">
                 <Link to="/login" className="text-sm font-heading tracking-wider uppercase py-1 text-maroon-300" onClick={() => setMobileOpen(false)}>Member Login</Link>
                 <Link to="/business-login" className="text-sm font-heading tracking-wider uppercase py-1 text-maroon-300 flex items-center gap-2" onClick={() => setMobileOpen(false)}>

@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Join from './pages/Join'
 import BusinessJoin from './pages/BusinessJoin'
 import OurMission from './pages/OurMission'
+import Events from './pages/Events'
 
 // Auth pages
 import Login from './pages/auth/Login'
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/for-businesses" element={<ForBusinessesPage />} />
           <Route path="/our-mission" element={<OurMission />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

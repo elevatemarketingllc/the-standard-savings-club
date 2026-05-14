@@ -3,10 +3,23 @@ import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
   Check, RefreshCw, Upload, Globe, Phone, MapPin, Tag,
-  Image, Save, LogOut, ChevronRight, Clock, ExternalLink, X
+  Image, Save, LogOut, ChevronRight, Clock, ExternalLink, X,
+  Calendar, Plus, Trash2
 } from 'lucide-react'
 
-const SECTIONS = ['overview', 'deal', 'links', 'hours', 'photos']
+const SECTIONS = ['overview', 'deal', 'links', 'hours', 'photos', 'events']
+
+const CATEGORIES = [
+  'Automotive', 'Barbershop / Grooming', 'Chiropractor / Wellness',
+  'Cleaning Services', 'Construction / Contractors', 'Dentist / Dental',
+  'Entertainment', 'Family Activities', 'Financial Services',
+  'Food & Drink', 'Health & Beauty', 'Home Services',
+  'Law / Legal', 'Marketing & Advertising', 'Medical / Healthcare',
+  'Nightlife / Bars', 'Pest Control', 'Pet Services',
+  'Real Estate', 'Restaurant', 'Retail / Shopping',
+  'Sports & Fitness', 'Sports Training', 'Tech & IT',
+  'Trades / Labor', 'Other',
+]
 
 const InputRow = ({ icon: Icon, label, hint, children }) => (
   <div className="flex items-start gap-4">
@@ -33,11 +46,38 @@ export default function BusinessPortal() {
   const [uploadingLogo, setUploadingLogo] = useState(false)
   const [uploadingCover, setUploadingCover] = useState(false)
   const [uploadingPhoto, setUploadingPhoto] = useState(false)
+  const [events, setEvents] = useState([])
+  const [eventForm, setEventForm] = useState({ title: '', description: '', event_date: '', start_time: '', end_time: '', location: '', address: '', event_url: '', is_free: true, price: '', category: '' })
+  const [savingEvent, setSavingEvent] = useState(false)
+  const [showEventForm, setShowEventForm] = useState(false)
   const logoRef = useRef()
   const coverRef = useRef()
   const photoRef = useRef()
 
   useEffect(() => { loadBusiness() }, [user])
+  useEffect(() => { if (business?.id) loadEvents() }, [business?.id])
+
+  const loadEvents = async () => {
+    const { data } = await supabase.from('business_events').select('*').eq('business_id', business.id).order('event_date', { ascending: true })
+    setEvents(data || [])
+  }
+
+  const handleSaveEvent = async () => {
+    if (!eventForm.title || !eventForm.event_date) return
+    setSavingEvent(true)
+    const { error } = await supabase.from('business_events').insert({ ...eventForm, business_id: business.id })
+    if (!error) {
+      setEventForm({ title: '', description: '', event_date: '', start_time: '', end_time: '', location: '', address: '', event_url: '', is_free: true, price: '', category: '' })
+      setShowEventForm(false)
+      await loadEvents()
+    }
+    setSavingEvent(false)
+  }
+
+  const handleDeleteEvent = async (id) => {
+    await supabase.from('business_events').delete().eq('id', id)
+    await loadEvents()
+  }
 
   const loadBusiness = async () => {
     if (!user) return
@@ -63,6 +103,7 @@ export default function BusinessPortal() {
       tagline: form.tagline,
       description: form.description,
       about: form.about,
+      category: form.category,
       deal: form.deal,
       deal_details: form.deal_details,
       booking_url: form.booking_url,
@@ -200,7 +241,7 @@ export default function BusinessPortal() {
           {SECTIONS.map(s => (
             <button key={s} onClick={() => setActiveSection(s)}
               className={`px-5 py-3 font-heading text-xs tracking-widest uppercase transition-colors whitespace-nowrap ${activeSection === s ? 'bg-gray-100 text-maroon-900' : 'text-maroon-300 hover:text-white'}`}>
-              {s === 'links' ? 'Social & Links' : s === 'hours' ? 'Hours & Booking' : s}
+              {s === 'links' ? 'Social & Links' : s === 'hours' ? 'Hours & Booking' : s === 'events' ? 'Events' : s}
             </button>
           ))}
         </div>
@@ -268,6 +309,15 @@ export default function BusinessPortal() {
             <div className="bg-white border border-gray-200 shadow-sm p-6">
               <h2 className="font-heading text-lg uppercase text-maroon-900 mb-5">Business Info</h2>
               <div className="space-y-4">
+                <div>
+                  <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Business Category</label>
+                  <select value={form.category || ''} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}
+                    className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm bg-white">
+                    <option value="">Select a category...</option>
+                    {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                  <p className="text-xs text-gray-400 mt-1">Shows on your profile and helps members find you in the directory</p>
+                </div>
                 <div>
                   <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Tagline</label>
                   <input type="text" {...field('tagline')} placeholder="Short, punchy line shown under your business name"
@@ -442,8 +492,137 @@ export default function BusinessPortal() {
           </div>
         )}
 
+        {/* ── EVENTS ── */}
+        {activeSection === 'events' && (
+          <div className="space-y-4">
+            <div className="bg-white border border-gray-200 shadow-sm p-6">
+              <div className="flex items-center justify-between mb-5">
+                <div>
+                  <h2 className="font-heading text-lg uppercase text-maroon-900">Events & Promotions</h2>
+                  <p className="text-gray-500 text-sm mt-1">Add events, specials, or promotions that show up on the public Events calendar.</p>
+                </div>
+                <button onClick={() => setShowEventForm(v => !v)}
+                  className="flex items-center gap-2 bg-maroon-700 hover:bg-maroon-800 text-white font-heading text-xs tracking-widest uppercase px-4 py-2 transition-colors">
+                  <Plus size={13} /> Add Event
+                </button>
+              </div>
+
+              {/* New event form */}
+              {showEventForm && (
+                <div className="bg-gray-50 border border-gray-200 p-5 mb-6 space-y-4">
+                  <h3 className="font-heading text-sm uppercase text-maroon-900 mb-3">New Event</h3>
+                  <div>
+                    <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Event Title <span className="text-red-500">*</span></label>
+                    <input type="text" value={eventForm.title} onChange={e => setEventForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Grand Opening, Happy Hour Special, Free Class Night"
+                      className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Date <span className="text-red-500">*</span></label>
+                      <input type="date" value={eventForm.event_date} onChange={e => setEventForm(f => ({ ...f, event_date: e.target.value }))}
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Start Time</label>
+                      <input type="time" value={eventForm.start_time} onChange={e => setEventForm(f => ({ ...f, start_time: e.target.value }))}
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">End Time</label>
+                      <input type="time" value={eventForm.end_time} onChange={e => setEventForm(f => ({ ...f, end_time: e.target.value }))}
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Description</label>
+                    <textarea value={eventForm.description} onChange={e => setEventForm(f => ({ ...f, description: e.target.value }))} rows={3} placeholder="Tell members what this event is about..."
+                      className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm resize-none" />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Location Name</label>
+                      <input type="text" value={eventForm.location} onChange={e => setEventForm(f => ({ ...f, location: e.target.value }))} placeholder="e.g. Our Main Location, Boise Downtown"
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Address</label>
+                      <input type="text" value={eventForm.address} onChange={e => setEventForm(f => ({ ...f, address: e.target.value }))} placeholder="123 Main St, Boise, ID"
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Event Link (optional)</label>
+                      <input type="text" value={eventForm.event_url} onChange={e => setEventForm(f => ({ ...f, event_url: e.target.value }))} placeholder="https://..."
+                        className="w-full border border-gray-300 focus:border-maroon-700 focus:outline-none px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label className="font-heading text-xs tracking-widest uppercase text-gray-600 mb-1.5 block">Admission</label>
+                      <div className="flex gap-3 items-center mt-2">
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input type="radio" checked={eventForm.is_free} onChange={() => setEventForm(f => ({ ...f, is_free: true, price: '' }))} className="accent-maroon-700" />
+                          <span className="text-sm text-gray-700">Free</span>
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input type="radio" checked={!eventForm.is_free} onChange={() => setEventForm(f => ({ ...f, is_free: false }))} className="accent-maroon-700" />
+                          <span className="text-sm text-gray-700">Paid</span>
+                        </label>
+                        {!eventForm.is_free && (
+                          <input type="text" value={eventForm.price} onChange={e => setEventForm(f => ({ ...f, price: e.target.value }))} placeholder="e.g. $15"
+                            className="border border-gray-300 focus:border-maroon-700 focus:outline-none px-3 py-2 text-sm w-24" />
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 pt-2">
+                    <button onClick={handleSaveEvent} disabled={savingEvent || !eventForm.title || !eventForm.event_date}
+                      className="flex items-center gap-2 bg-maroon-700 hover:bg-maroon-800 disabled:opacity-50 text-white font-heading text-xs tracking-widest uppercase px-6 py-3 transition-colors">
+                      {savingEvent ? <><RefreshCw size={12} className="animate-spin" /> Saving...</> : <><Check size={12} /> Save Event</>}
+                    </button>
+                    <button onClick={() => setShowEventForm(false)} className="text-gray-500 hover:text-gray-700 text-sm transition-colors">Cancel</button>
+                  </div>
+                </div>
+              )}
+
+              {/* Existing events list */}
+              {events.length === 0 && !showEventForm ? (
+                <div className="text-center py-12 text-gray-400">
+                  <Calendar size={32} className="mx-auto mb-3 opacity-30" />
+                  <p className="font-heading text-sm uppercase tracking-widest">No events yet</p>
+                  <p className="text-xs mt-1">Add your first event to appear on the community calendar</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {events.map(ev => (
+                    <div key={ev.id} className="flex items-start gap-4 p-4 border border-gray-100 bg-gray-50 rounded">
+                      <div className="bg-maroon-700 text-white text-center px-3 py-2 rounded flex-shrink-0 min-w-[52px]">
+                        <div className="font-heading text-xs uppercase">{new Date(ev.event_date + 'T12:00:00').toLocaleString('en-US', { month: 'short' })}</div>
+                        <div className="font-heading text-2xl font-bold leading-none">{new Date(ev.event_date + 'T12:00:00').getDate()}</div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-heading text-sm uppercase text-maroon-900">{ev.title}</div>
+                        {(ev.start_time || ev.location) && (
+                          <div className="text-xs text-gray-500 mt-0.5">
+                            {ev.start_time && <span>{ev.start_time.slice(0,5)}{ev.end_time ? ` – ${ev.end_time.slice(0,5)}` : ''}</span>}
+                            {ev.start_time && ev.location && <span> · </span>}
+                            {ev.location && <span>{ev.location}</span>}
+                          </div>
+                        )}
+                        {ev.description && <p className="text-xs text-gray-500 mt-1 truncate">{ev.description}</p>}
+                      </div>
+                      <button onClick={() => handleDeleteEvent(ev.id)} className="text-gray-300 hover:text-red-500 transition-colors flex-shrink-0">
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Save */}
-        {activeSection !== 'photos' && (
+        {activeSection !== 'photos' && activeSection !== 'events' && (
           <div className="mt-6 flex items-center gap-4">
             <button onClick={handleSave} disabled={saving || !business?.id}
               className="flex items-center gap-2 bg-maroon-700 hover:bg-maroon-800 disabled:opacity-50 text-white font-heading text-xs tracking-widest uppercase px-8 py-4 transition-colors">
