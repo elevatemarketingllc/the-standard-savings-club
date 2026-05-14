@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../../components/SEO'
 import { supabase } from '../../lib/supabase'
 import { MapPin, Search, ExternalLink, Tag, ChevronRight } from 'lucide-react'
 
@@ -61,6 +62,7 @@ export default function BusinessDirectory() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Partner Businesses" description="Browse exclusive deals at local Treasure Valley businesses. Standard Savings Club members save at every partner." path="/businesses" />
       {/* Header */}
       <div className="bg-maroon-900 text-white py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

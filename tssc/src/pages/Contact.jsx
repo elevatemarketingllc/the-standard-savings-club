@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { Mail, MapPin, Check } from 'lucide-react'
 
 export default function Contact() {
@@ -20,6 +21,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Contact Us" description="Get in touch with The Standard Savings Club. Questions about membership or partnering with us?" path="/contact" />
       <div className="bg-maroon-900 text-white py-12 text-center">
         <Link to="/" className="font-heading text-xs tracking-widest uppercase text-maroon-300 hover:text-white transition-colors mb-3 block">← The Standard Savings Club</Link>
         <h1 className="font-heading text-4xl uppercase font-bold">Contact Us</h1>

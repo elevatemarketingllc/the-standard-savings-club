@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { supabase } from '../lib/supabase'
 import { Calendar, Clock, MapPin, ExternalLink, ChevronRight, Tag } from 'lucide-react'
 
@@ -59,6 +60,7 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Events" description="Events, specials, and promotions happening at Standard Savings Club partner businesses across the Treasure Valley." path="/events" />
       {/* Header */}
       <div className="bg-maroon-900 text-white py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

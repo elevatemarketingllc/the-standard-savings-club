@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { Check, ArrowRight, Tag, Video, MessageSquare, Users } from 'lucide-react'
 
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/28E28s1GVfxU2M4b0N3wQ00'

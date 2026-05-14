@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { ArrowRight, Globe, Mail, Star, Video, Handshake, Users, CheckCircle, Heart, TrendingUp } from 'lucide-react'
 
 const promotions = [
@@ -23,6 +24,7 @@ const businessPerks = [
 export default function OurMission() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Our Mission" description="The Standard Savings Club is built around helping local businesses create real relationships with local customers again — bringing word-of-mouth marketing back to Boise." path="/our-mission" />
 
       {/* ── HERO ── */}
       <div className="bg-maroon-900 text-white py-24">

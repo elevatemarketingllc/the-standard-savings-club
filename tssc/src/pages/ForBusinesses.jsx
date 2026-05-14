@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { Store, Users, TrendingUp, CheckCircle, Star, ChevronRight, ArrowRight, Megaphone, Mail, Video, Handshake, Globe, Heart } from 'lucide-react'
 
 const promotions = [
@@ -23,6 +24,7 @@ const received = [
 export default function ForBusinesses() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="For Businesses" description="Partner with The Standard Savings Club and get your business in front of engaged local members. Start for $33/month — same as a membership." path="/for-businesses" />
 
       {/* ── HERO ── */}
       <div className="bg-maroon-900 text-white py-20">

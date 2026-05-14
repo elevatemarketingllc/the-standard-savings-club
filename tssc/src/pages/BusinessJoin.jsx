@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { Check, ArrowRight, Store, Users, TrendingUp, Star, ChevronRight } from 'lucide-react'
 
 // ⚠️ Replace with your real business Stripe Payment Link after creating it in Stripe Dashboard
@@ -18,6 +19,7 @@ const included = [
 export default function BusinessJoin() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO title="Partner With Us" description="Join The Standard Savings Club as a partner business. Get featured in the member directory and promoted to local Boise customers." path="/business-join" />
       {/* Header */}
       <div className="bg-maroon-900 text-white py-16 text-center">
         <Link to="/for-businesses" className="font-heading text-xs tracking-widest uppercase text-maroon-300 hover:text-white transition-colors mb-4 block">
